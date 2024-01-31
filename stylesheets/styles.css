@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+body
+{
+    background-color: DodgerBlue;
+    color: White;
+    font-family: Arial, sans-serif;
+}
+  
+main
+{
+    background-color: White;
+    color: Navy;
+}
+
+header
+  {
+    background-image: url('../images/LogoSmall.png');
+    min-height: 50px;
+    background-position: right top;
+    background-repeat: no-repeat;
+  }
+
+  nav ul
+  {
+    list-style-type: none;
+    margin: 0;
+    padding:0;
+  }
+
+  nav li
+  {
+    display: inline-block;
+    margin-right: -8px;
+  }
+
+  nav a
+  {
+    display: block;
+    padding: 1rem;
+    text-decoration: none;
+    color: #2C3E57;
+    font-weight: bold;
+  }
+
+  nav a:hover
+  {
+    background-color: Navy;
+    color: White;
+  }
+
+.responsive_img1
+{
+  width: 100%;
+  height: auto;
+}
+
+.responsive_img2
+{
+  max-width: 100%;
+  height: auto;
+}
+
+.fixed_size_img
+{
+  width: 250px;
+  height: auto;
+}
+
+dt
+{
+	font-weight: bold;
+}
+
+/* Responsive style settings for larger screens */
+@media screen and (min-width: 800px) 
+{
+    body
+    {
+      background-color: LightSkyBlue;
+      color: Navy;
+      font-family: 'Georgia', serif;
+    }
+  
+    header
+    {
+      background-color: DodgerBlue;
+      color: Snow;
+      background-image: url('../images/LogoLarge.png');
+      min-height: 100px;
+    }
+}
