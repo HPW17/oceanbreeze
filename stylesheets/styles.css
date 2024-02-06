@@ -1,92 +1,191 @@
-@charset "UTF-8";
+@charset "utf-8";
+/*
+	css for Chateau Chien Dog Training website
+*/
 
-body
-{
-    background-color: DodgerBlue;
-    color: White;
-    font-family: Arial, sans-serif;
+/*
+	Original Color Palette:
+	body   bg-DodgerBlue,   font-White for small screen
+	       bg-LightSkyBlue, font-Navy  for large screen
+	header bg-BodgerBlue,   font-White for small screen
+	       bg-BodgerBlue,   font-Snow  for large screen
+
+	New Color Palette:
+	body   bg-#856F6F, font-#EEFFFF for small screen, contrast 4.52
+	       bg-#13778B, font-#E7F7F8 for large screen, contrast 4.71
+	header bg-#605252, font-#EEFFFF for small screen, contrast 7.21
+	       bg-#0C535F, font-#E7F7F8 for large screen, contrast 7.88
+
+	For links, 
+	Unvisited-White  on background #856F6F (small screen), contrast 4.66
+	                 on background #13778B (large screen), contrast 5.19
+	Visited  -Black  on background #856F6F (small screen), contrast 4.5
+	                 on background #13778B (large screen), contrast 4.03
+	Hover    -Yellow on background Navy,                   contrast 14.9
+	
+	I used these sites to generate color palette samples:
+	https://www.canva.com/colors/color-palette-generator/
+	https://coolors.co/
+	
+	I used these sites to check color contrast:
+	https://webaim.org/resources/contrastchecker/
+	https://snook.ca/technical/colour_contrast/colour.html#fg=000000,bg=FFFFFF
+	
+	And used this site for HEX to RGB conversion:
+	https://www.rapidtables.com/convert/color/hex-to-rgb.html
+*/
+body {
+	background-color: #856F6F;
+	color: #EEFFFF;
+	font-family: Arial, sans-serif;
 }
-  
-main
-{
-    background-color: White;
-    color: Navy;
+header {
+	background-color: #605252;
+	background-image: url("../images/LogoSmall.png");
+	background-position: right top;
+	background-repeat: no-repeat;
+	min-height: 50px;
 }
-
-header
-  {
-    background-image: url('../images/LogoSmall.png');
-    min-height: 50px;
-    background-position: right top;
-    background-repeat: no-repeat;
-  }
-
-  nav ul
-  {
-    list-style-type: none;
-    margin: 0;
-    padding:0;
-  }
-
-  nav li
-  {
-    display: inline-block;
-    margin-right: -8px;
-  }
-
-  nav a
-  {
-    display: block;
-    padding: 1rem;
-    text-decoration: none;
-    color: #2C3E57;
-    font-weight: bold;
-  }
-
-  nav a:hover
-  {
-    background-color: Navy;
-    color: White;
-  }
-
-.responsive_img1
-{
-  width: 100%;
-  height: auto;
+a {
+	color: White;
 }
-
-.responsive_img2
-{
-  max-width: 100%;
-  height: auto;
+a:hover {
+	color: Yellow;
 }
-
-.fixed_size_img
-{
-  width: 250px;
-  height: auto;
+nav {
+	padding: 2px;
+	font-size: 1.5em;
+	white-space: nowrap;
 }
-
-dt
-{
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding:0;
+}
+nav li {
+	display: inline-block;
+	margin-right: -8px;
+}
+nav a {
+	display: block;
+	padding: 1rem;
+	text-decoration: none;
+	color: rgb(0, 0, 128);
+	font-weight: bold;
+	border-radius: 5px;
+}
+nav a:link {
+	color: rgb(255, 255, 255);
+}
+nav a:visited {
+	color: rgb(0, 0, 0);
+}
+nav a:hover {
+	background-color: rgb(0, 0, 128);
+	color: rgb(255, 255, 0);
+}
+main {
+	background-color: White;
+	color: Navy;
+	padding-bottom: 20px;
+}
+dt {
 	font-weight: bold;
 }
+.resp_img1 {
+	width: 100%;
+	height: auto;
+}
+.resp_img2 {
+	max-width: 100%;
+	height: auto;
+}
+.fixed_img {
+	width: 250px;
+	height: auto;
+}
+#sponsor_img {
+	border: 20px solid White;
+	border-radius: 10px;
+}
+#sponsor_img:hover {
+	border: 20px solid Navy;
+}
 
-/* Responsive style settings for larger screens */
-@media screen and (min-width: 800px) 
-{
-    body
-    {
-      background-color: LightSkyBlue;
-      color: Navy;
-      font-family: 'Georgia', serif;
-    }
-  
-    header
-    {
-      background-color: DodgerBlue;
-      color: Snow;
-      background-image: url('../images/LogoLarge.png');
-      min-height: 100px;
-    }
+#classoptions aside {
+	background-color: #ffffbb;
+	padding: 5px;
+}
+#trainers {
+	background-color: #ffeedd;
+	border-radius: 10px;
+}
+#trainers ol {
+	list-style-type: lower-alpha;
+}
+#trainers li {
+	margin-bottom: 10px;
+}
+#trainers em {
+	font-style: italic;
+	font-weight: bold;
+}
+.trainerslist {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+.trainerslist figure {
+	margin: 10px;
+	text-align: center;
+	width: 100px;
+}
+.trainerslist img {
+	width: 80px;
+	height: auto;
+	border-radius: 40px;
+}
+.trainerslist figcaption {
+	margin-top: 5px;
+	font-weight: bold;
+}
+#schoolname {
+	font-family: "Brush Script MT", cursive;
+	font-size: 4em;
+}
+.orderedlist {
+	background-color: #ddeeff;
+	padding: 5px;
+}
+.largeritalics {
+	font-size: 1.2em;
+	font-style: italic;
+}
+
+/* 
+	-------------------------------------------------------------------
+	Responsive style settings for larger screen: 
+	1. body's background color, text color, and font family,
+	2. header/banner's background color and text color.
+*/
+@media screen and (min-width: 800px) {
+	body {
+		background-color: #13778B;
+		color: #E7F7F8;
+		font-family: Georgia, serif;
+	}
+	header {
+		background-color: #0C535F;
+		color: #E7F7F8;
+		background-image: url("../images/LogoLarge.png");
+		min-height: 100px;
+	}
+	.trainerslist figure {
+		width: 180px;
+	}
+	.trainerslist img {
+		width: 150px;
+		height: auto;
+		border-radius: 75px;
+	}
 }

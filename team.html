@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+	ITC2400 Module 5 Assignment: Classes and Divisions
+	Hao-Peng Wang, NUID: 002653367
+-->
+
+<html lang="en">
+	<head>
+		<title>Chateau Chien | Our Team</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Hao-Peng Wang">
+		<link rel="stylesheet" href="stylesheets/styles.css">
+	</head>
+
+	<body>
+		<header>
+			<h1 id="schoolname" class="pagetitle"><span class="largeritalics">Chateau Chien</span></h1>
+		</header>
+		<!-- 
+			Links to Home and three main content pages: 
+			Classes, Schedule, and Contact
+		-->
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="classes.html">Classes</a></li>
+				<li><a href="#" aria-current="page">Our Team</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</nav>
+
+		<main>
+			<section id="sponsors">
+				<h2>Sponsors will go here.</h2>
+				<a href="https://www.arlboston.org/"><img src="images/sponsor.jpg" alt="Handshake" class="fixed_img" id="sponsor_img"></a>
+			</section>
+			<hr>
+			<!--
+				I used a semantic element "section" to group the trainer items 
+				so we can clearly understand its purpose. 
+			-->
+			<section id="trainers">
+				<h2>Our Trainers</h2>
+				<p>Our Trainers are</p>
+				<ol>
+					<li><em>Experienced</em></li>
+					<li><em>Helpful</em></li>
+					<li><em>Available for private lessons</em></li>
+				</ol>
+				<div class="trainerslist">
+					<figure>
+						<img src="images/trainer1.jpeg" alt="Trainer 1">
+						<figcaption>John Doe</figcaption>
+					</figure>
+					<figure>
+						<img src="images/trainer2.jpeg" alt="Trainer 2">
+						<figcaption>Michael Johnson</figcaption>
+					</figure>
+					<figure>
+						<img src="images/trainer3.jpeg" alt="Trainer 3">
+						<figcaption>Jane Smith</figcaption>
+					</figure>
+				</div>
+				<div class="trainerslist">
+					<figure>
+						<img src="images/trainer4.jpeg" alt="Trainer 4">
+						<figcaption>Emily Brown</figcaption>
+					</figure>
+					<figure>
+						<img src="images/trainer5.jpg" alt="Trainer 5">
+						<figcaption>David Lee</figcaption>
+					</figure>
+					<figure>
+						<img src="images/trainer6.jpeg" alt="Trainer 6">
+						<figcaption>Sarah Wilson</figcaption>
+					</figure>
+				</div>
+			</section>
+		</main>
+		<footer>
+			<p>Copyright &copy; 2024 <span class="largeritalics">Chateau Chien</span><br>
+			Send email: <a href="mailto:hao-peng@wang.com">hao-peng@wang.com</a></p>
+		</footer>
+	</body>
+</html>
