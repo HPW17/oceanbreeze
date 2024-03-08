@@ -17,11 +17,11 @@
 	       bg-#0C535F, font-#E7F7F8 for large screen, contrast 7.88
 
 	For links, 
-	Unvisited-White  on background #856F6F (small screen), contrast 4.66
-	                 on background #13778B (large screen), contrast 5.19
-	Visited  -Black  on background #856F6F (small screen), contrast 4.5
-	                 on background #13778B (large screen), contrast 4.03
-	Hover    -Yellow on background Navy,                   contrast 14.9
+	Unvisited-White   on background #856F6F (small screen),   contrast 4.66
+	                  on background #13778B (large screen),   contrast 5.19
+	Visited  -Yellow  on background #856F6F (small screen),   contrast 4.34
+	                  on background #13778B (large screen),   contrast 4.84
+	Hover    -Mercury (#E5E5E5) on background Navy (#000080), contrast 12.7
 	
 	I used these sites to generate color palette samples:
 	https://www.canva.com/colors/color-palette-generator/
@@ -34,6 +34,8 @@
 	And used this site for HEX to RGB conversion:
 	https://www.rapidtables.com/convert/color/hex-to-rgb.html
 */
+
+/* index.html and common styles */
 body {
 	background-color: #856F6F;
 	color: #EEFFFF;
@@ -46,6 +48,17 @@ header {
 	background-repeat: no-repeat;
 	min-height: 50px;
 }
+main {
+	padding: 1em;
+}
+h1 {
+	margin: 0;
+	padding: 0;
+}
+h2 {
+	margin: 0;
+	padding: 10px 0;
+}
 a {
 	color: White;
 }
@@ -54,41 +67,54 @@ a:hover {
 }
 nav {
 	padding: 2px;
-	font-size: 1.5em;
 	white-space: nowrap;
-}
-nav ul {
-	list-style-type: none;
-	margin: 0;
-	padding:0;
-}
-nav li {
-	display: inline-block;
-	margin-right: -8px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
 }
 nav a {
-	display: block;
 	padding: 1rem;
 	text-decoration: none;
 	color: rgb(0, 0, 128);
 	font-weight: bold;
 	border-radius: 5px;
+	text-align: center;
+	box-sizing: border-box;
 }
 nav a:link {
-	color: rgb(255, 255, 255);
+	color: rgb(255, 255, 255); /* White #FFFFFF*/
 }
 nav a:visited {
-	color: rgb(0, 0, 0);
+	color: rgb(255, 255, 0); /* Yellow #FFFF00 */
 }
 nav a:hover {
-	background-color: rgb(0, 0, 128);
-	color: rgb(255, 255, 0);
+	background-color: rgb(0, 0, 128); /* Navy Blue #000080 */
+	color: rgb(229, 229, 229); /* Mercury #E5E5E5 */
 }
 main {
 	background-color: White;
 	color: Navy;
 	padding-bottom: 20px;
 }
+.orderedlist {
+	background-color: #ddeeff;
+	padding: 5px;
+}
+/* for each occurrence of the business name */
+.largeritalics {
+	font-size: 1.2em;
+	font-style: italic;
+}
+#schoolname {
+	font-family: "Brush Script MT", cursive;
+	font-size: 4em;
+}
+footer {
+	text-align: center;
+	clear: both;
+}
+
+/* classes.html */
 dt {
 	font-weight: bold;
 }
@@ -104,21 +130,30 @@ dt {
 	width: 250px;
 	height: auto;
 }
-#sponsor_img {
-	border: 20px solid White;
-	border-radius: 10px;
+#classdescriptions, #troubleshooting {
+	background-color: #ddeeff;
+	color: Navy;
+	padding: 0.5em;
 }
-#sponsor_img:hover {
-	border: 20px solid Navy;
+#classoptions {
+	background-color: #ffffbb;
+	color: Navy;
+	padding: 0.5em;
+	border: 3px solid Red;
+	border-radius: 30px;
+}
+#classoptions h2, #classdescriptions h2, #troubleshooting h2 {
+	text-align: center;
 }
 
-#classoptions aside {
-	background-color: #ffffbb;
-	padding: 5px;
+/* team.html */
+#sponsors {
+	padding: 1em;
 }
 #trainers {
 	background-color: #ffeedd;
 	border-radius: 10px;
+	padding: 1.5em;
 }
 #trainers ol {
 	list-style-type: lower-alpha;
@@ -130,36 +165,99 @@ dt {
 	font-style: italic;
 	font-weight: bold;
 }
-.trainerslist {
+.trainers_characteristics {
+	text-align: center;
+}
+.trainers_characteristics ol {
+	display: inline-block;
+	text-align: left;
+}
+/* flexible container around the figures of sponsors/traniners */
+.images_gallery_container {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: flex-start;
+	justify-content: space-evenly;
 }
-.trainerslist figure {
+.images_gallery_container a {
+	color: Black;
+	text-decoration: none;
+	border: 3px solid White;
+	border-radius: 20px;
+}
+.images_gallery_container a:hover {
+	color: Blue;
+	border: 3px solid Blue;
+}
+figure.sponsor_figure {
+	margin: 10px;
+	text-align: center;
+	width: 200px;
+}
+figure.sponsor_figure img {
+	width: 100px;
+	height: auto;
+}
+figure.trainer_figure {
 	margin: 10px;
 	text-align: center;
 	width: 100px;
 }
-.trainerslist img {
+figure.trainer_figure img {
 	width: 80px;
 	height: auto;
+	/* make the trainer images circle */
 	border-radius: 40px;
 }
-.trainerslist figcaption {
+figcaption {
 	margin-top: 5px;
 	font-weight: bold;
 }
-#schoolname {
-	font-family: "Brush Script MT", cursive;
-	font-size: 4em;
+
+/* ourgraduates.html */
+.graduates_container {
+	display: grid;
+	/* 2 columns for small screens, change to 4 columns in large screens */
+	grid-template-columns: repeat(2, 1fr); 
+	/* let images auto wrap to fill up the grid area */
+	grid-auto-flow: dense;
+	grid-gap: 2px;
+	align-items: center;
+	margin: 20px auto;
+	padding: 30px 10px;
+	background-color: #ffa;
+	border-radius: 10px;
+	filter: drop-shadow(0 0 0.8rem rgba(0, 0, 0, 0.5));
 }
-.orderedlist {
-	background-color: #ddeeff;
-	padding: 5px;
+.graduates_container img {
+	width: 100%;
+	height: auto;
+	border-radius: 10px;
 }
-.largeritalics {
-	font-size: 1.2em;
-	font-style: italic;
+/* image of my dog: focused by fixing position at row 1 column 1, 
+   the other images auto wrap to fill up the grid area */
+.mydog {
+	grid-area: 1 / 1 / 2 / 2;
+}
+/* for long images, expand across two rows */
+.img_long {
+	grid-row: auto / span 2;
+}
+/* for wide images, expand across two columns */
+.img_wide {
+	grid-column: auto / span 2;
+}
+#attribution {
+	border-top: Gray 1px solid;
+	margin-top: 50px;
+}
+#attribution a {
+	background-color: Blue;
+	padding: 0.2em 0.5em;
+	border-radius: 5px;
+	text-decoration: none;
+}
+#attribution a:hover {
+	background-color: Red;
 }
 
 /* 
@@ -167,8 +265,12 @@ dt {
 	Responsive style settings for larger screen: 
 	1. body's background color, text color, and font family,
 	2. header/banner's background color and text color.
+	3. navbar from horizontal on small screen to vertical on large screen
+	
 */
 @media screen and (min-width: 800px) {
+
+	/* index.html and common styles */
 	body {
 		background-color: #13778B;
 		color: #E7F7F8;
@@ -180,12 +282,50 @@ dt {
 		background-image: url("../images/LogoLarge.png");
 		min-height: 100px;
 	}
-	.trainerslist figure {
+	/* for two-column display on larger screen */
+	.content_container {
+		display: flex;
+	}
+	main {
+		height: 100vh;
+		flex-grow: 1;
+		overflow: scroll;
+	}
+	/* for vertical navbar on larger screen */
+	nav {
+		flex-direction: column;
+		margin-right: 5px;
+		justify-content: flex-start;
+		height: 100vh;
+	}
+
+	/* classes.html */
+	#classdescriptions, #troubleshooting {
+		padding: 1em;
+	}
+	#classoptions {
+		padding: 1em;
+	}
+
+	/* team.html */
+	figure.trainer_figure {
 		width: 180px;
 	}
-	.trainerslist img {
+	figure.trainer_figure img {
 		width: 150px;
 		height: auto;
 		border-radius: 75px;
+	}
+	figure.sponsor_figure img {
+		width: 150px;
+		height: auto;
+		border-radius: 75px;
+	}
+
+	/* ourgraduates.html */
+	.graduates_container {
+		/* 4 columns for large screens, reduce to 2 columns in small screens */
+		grid-template-columns: repeat(4, 1fr);
+		background-color: #9cc;
 	}
 }

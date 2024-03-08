@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <!--
-	ITC2400 Module 5 Assignment: Classes and Divisions
+	ITC2400 Module 8 Assignment: Gridview
 	Hao-Peng Wang, NUID: 002653367
 -->
 
 <html lang="en">
 	<head>
-		<title>Chateau Chien | Classes</title>
+		<title>Classes | Chateau Chien</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="Hao-Peng Wang">
@@ -17,62 +17,68 @@
 		<header>
 			<h1 id="schoolname" class="pagetitle"><span class="largeritalics">Chateau Chien</span></h1>
 		</header>
-		<!-- 
-			Links to Home and three main content pages: 
-			Classes, Schedule, and Contact
-		-->
-		<nav>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="#" aria-current="page">Classes</a></li>
-				<li><a href="team.html">Our Team</a></li>
-				<li><a href="contact.html">Contact</a></li>
-			</ul>
-		</nav>
 
-		<main>
-			<img src="images/ClassesDogs.jpg" alt="Dogs in training" class="resp_img2">
-			<section id="classoptions">
-				<h2>Pick the right class for you!</h2>
-				<aside>
-					<ul>
-						<li>Treats and toys provided in all classes.</li>
-						<li>Sessions last two hours.</li>
-						<li>New classes start at the beginning of every month.</li>
-						<li>Bring your favorite leash.</li>
-					</ul>
-				</aside>
-			</section>
-			<hr>
-			<section id="classdescriptions">
-			<h2>Class Descriptions</h2>
-				<div class="orderedlist">
-					<dl>
-						<dt>Puppy Pawsitivity</dt>
-							<dd>This class helps with socialization skills, potty and crate training.  Learn foundational cues like <q>sit</q>, <q>down</q> and <q>come</q>.  Get tips on how to address chewing, teething and jumping on guests.  For new puppies to 8 months old.</dd>
-						<dt>Dynamic Dogs</dt>
-							<dd>This class is for dogs over 6 months who understand the basics and need to upgrade their skills.  Learn loose-leash walking, <q>Leave it</q>,  <q>wait</q> and <q>lay down</q>.  Get tips on excessive barking, and greeting strangers.  Tips to curb undesired behaviors such as jumping, barking and digging.</dd>
-						<dt>Tricks and Treats</dt>
-							<dd>In this class, you will learn common tricks like <q>shake paw</q>, <q>beg</q> or <q>play dead</q>.  The class will strengthen socialization skills and assist with any lingering behavioral issues.  For dogs over 1 year. </dd>
-					</dl>
-				</div>
-			</section>
-			<hr>
+		<!--
+			Two-column display on larger screen, 
+			block 1 (navbar and main)
+		-->
+		<div class="content_container"> 
 			<!-- 
-				Added an ordered list for troubleshooting steps
+				Links to Home and three main content pages: 
+				Classes, Schedule, and Contact
 			-->
-			<section id="troubleshooting">
-				<h2>Training Troubleshooting Steps</h2>
-				<p>It's important to follow the following steps in sequence:
-				<div class="orderedlist">
-					<ol>
-						<li>Recognizing signs of resistance.</li>
-						<li>Modifying the training approach.</li>
-						<li>Seeking professional help when necessary.</li>
-					</ol>
+			<nav>
+				<a href="index.html">Home</a>
+				<a href="#" aria-current="page">Classes</a>
+				<a href="team.html">Our Team</a>
+				<a href="ourgraduates.html">Our Grads</a>
+				<a href="contact.html">Contact</a>
+			</nav>
+			<main>
+				<img src="images/ClassesDogs.jpg" alt="Dogs in training" class="resp_img2">
+				<!--
+					Two-column display on larger screen, 
+					block 2 (aside and description/troubleshooint)
+				-->
+				<div class="content_container"> 
+					<aside id="classoptions">
+						<h2>Pick the right class for you!</h2>
+						<ul>
+							<li>Treats and toys provided in all classes.</li>
+							<li>Sessions last two hours.</li>
+							<li>New classes start at the beginning of every month.</li>
+							<li>Bring your favorite leash.</li>
+						</ul>
+					</aside>
+					<div>
+						<section id="classdescriptions">
+							<h2>Class Descriptions</h2>
+							<dl>
+								<dt>Puppy Pawsitivity</dt>
+									<dd>This class helps with socialization skills, potty and crate training.  Learn foundational cues like <q>sit</q>, <q>down</q> and <q>come</q>.  Get tips on how to address chewing, teething and jumping on guests.  For new puppies to 8 months old.</dd>
+								<dt>Dynamic Dogs</dt>
+									<dd>This class is for dogs over 6 months who understand the basics and need to upgrade their skills.  Learn loose-leash walking, <q>Leave it</q>,  <q>wait</q> and <q>lay down</q>.  Get tips on excessive barking, and greeting strangers.  Tips to curb undesired behaviors such as jumping, barking and digging.</dd>
+								<dt>Tricks and Treats</dt>
+									<dd>In this class, you will learn common tricks like <q>shake paw</q>, <q>beg</q> or <q>play dead</q>.  The class will strengthen socialization skills and assist with any lingering behavioral issues.  For dogs over 1 year. </dd>
+							</dl>
+						</section>
+						<!-- 
+							Added an ordered list for troubleshooting steps
+						-->
+						<section id="troubleshooting">
+							<h2>Training Troubleshooting Steps</h2>
+							<p>It's important to follow the following steps in sequence:
+							<ol>
+								<li>Recognizing signs of resistance.</li>
+								<li>Modifying the training approach.</li>
+								<li>Seeking professional help when necessary.</li>
+							</ol>
+						</section>
+					</div>
 				</div>
-			</section>
-		</main>
+			</main>
+		</div>
+
 		<footer>
 			<p>Copyright &copy; 2024 <span class="largeritalics">Chateau Chien</span><br>
 			Send email: <a href="mailto:hao-peng@wang.com">hao-peng@wang.com</a></p>

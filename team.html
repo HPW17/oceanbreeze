@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <!--
-	ITC2400 Module 5 Assignment: Classes and Divisions
+	ITC2400 Module 8 Assignment: Gridview
 	Hao-Peng Wang, NUID: 002653367
 -->
 
 <html lang="en">
 	<head>
-		<title>Chateau Chien | Our Team</title>
+		<title>Our Team | Chateau Chien</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="Hao-Peng Wang">
@@ -17,67 +17,95 @@
 		<header>
 			<h1 id="schoolname" class="pagetitle"><span class="largeritalics">Chateau Chien</span></h1>
 		</header>
-		<!-- 
-			Links to Home and three main content pages: 
-			Classes, Schedule, and Contact
-		-->
-		<nav>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="classes.html">Classes</a></li>
-				<li><a href="#" aria-current="page">Our Team</a></li>
-				<li><a href="contact.html">Contact</a></li>
-			</ul>
-		</nav>
 
-		<main>
-			<section id="sponsors">
-				<h2>Sponsors will go here.</h2>
-				<a href="https://www.arlboston.org/"><img src="images/sponsor.jpg" alt="Handshake" class="fixed_img" id="sponsor_img"></a>
-			</section>
-			<hr>
-			<!--
-				I used a semantic element "section" to group the trainer items 
-				so we can clearly understand its purpose. 
+		<div class="content_container">
+			<!-- 
+				Links to Home and three main content pages: 
+				Classes, Schedule, and Contact
 			-->
-			<section id="trainers">
-				<h2>Our Trainers</h2>
-				<p>Our Trainers are</p>
-				<ol>
-					<li><em>Experienced</em></li>
-					<li><em>Helpful</em></li>
-					<li><em>Available for private lessons</em></li>
-				</ol>
-				<div class="trainerslist">
-					<figure>
-						<img src="images/trainer1.jpeg" alt="Trainer 1">
-						<figcaption>John Doe</figcaption>
-					</figure>
-					<figure>
-						<img src="images/trainer2.jpeg" alt="Trainer 2">
-						<figcaption>Michael Johnson</figcaption>
-					</figure>
-					<figure>
-						<img src="images/trainer3.jpeg" alt="Trainer 3">
-						<figcaption>Jane Smith</figcaption>
-					</figure>
-				</div>
-				<div class="trainerslist">
-					<figure>
-						<img src="images/trainer4.jpeg" alt="Trainer 4">
-						<figcaption>Emily Brown</figcaption>
-					</figure>
-					<figure>
-						<img src="images/trainer5.jpg" alt="Trainer 5">
-						<figcaption>David Lee</figcaption>
-					</figure>
-					<figure>
-						<img src="images/trainer6.jpeg" alt="Trainer 6">
-						<figcaption>Sarah Wilson</figcaption>
-					</figure>
-				</div>
-			</section>
-		</main>
+			<nav class="navcontainer">
+				<a href="index.html">Home</a>
+				<a href="classes.html">Classes</a>
+				<a href="#" aria-current="page">Our Team</a>
+				<a href="ourgraduates.html">Our Grads</a>
+				<a href="contact.html">Contact</a>
+			</nav>
+
+			<main>
+				<!--
+					Semantic element "section" used here to group the sponsors 
+				-->
+				<section id="sponsors">
+					<h2>Our Sponsors</h2>
+					<div class="images_gallery_container">
+						<a href="https://www.arlboston.org/">
+							<figure class="sponsor_figure">
+								<img src="images/sponsor1.jpg" alt="Sponsor 1">
+								<figcaption>Animal Rescue League</figcaption>
+							</figure>
+						</a>
+						<a href="https://www.mspca.org/">
+							<figure class="sponsor_figure">
+								<img src="images/sponsor2.jpg" alt="Sponsor 2">
+								<figcaption>MSPCA-Angell</figcaption>
+							</figure>
+						</a>
+						<a href="https://www.petfinder.com/">
+							<figure class="sponsor_figure">
+								<img src="images/sponsor3.jpg" alt="Sponsor 3">
+								<figcaption>PetFinder</figcaption>
+							</figure>
+						</a>
+					</div>
+				</section>
+				<hr>
+				<!--
+					Semantic element "section" used here to group the trainers 
+				-->
+				<section id="trainers">
+					<h2>Our Trainers</h2>
+					<div class="trainers_characteristics">
+						<h3>Our Trainers are</h3>
+						<ol>
+							<li><em>Experienced</em></li>
+							<li><em>Helpful</em></li>
+							<li><em>Available for private lessons</em></li>
+						</ol>
+					</div>
+					<div class="images_gallery_container">
+						<figure class="trainer_figure">
+							<img src="images/trainer1.jpeg" alt="Trainer 1">
+							<figcaption>John Doe</figcaption>
+						</figure>
+						<figure class="trainer_figure">
+							<img src="images/trainer2.jpeg" alt="Trainer 2">
+							<figcaption>Michael Johnson</figcaption>
+						</figure>
+						<figure class="trainer_figure">
+							<img src="images/trainer3.jpeg" alt="Trainer 3">
+							<figcaption>Jane Smith</figcaption>
+						</figure>
+						<figure class="trainer_figure">
+							<img src="images/trainer4.jpeg" alt="Trainer 4">
+							<figcaption>Emily Brown</figcaption>
+						</figure>
+						<figure class="trainer_figure">
+							<img src="images/trainer5.jpg" alt="Trainer 5">
+							<figcaption>David Lee</figcaption>
+						</figure>
+						<figure class="trainer_figure">
+							<img src="images/trainer6.jpeg" alt="Trainer 6">
+							<figcaption>Sarah Wilson</figcaption>
+						</figure>
+						<figure class="trainer_figure">
+							<img src="images/trainer7.jpeg" alt="Trainer 7">
+							<figcaption>Stephanie Gibson</figcaption>
+						</figure>
+					</div>
+				</section>
+			</main>
+		</div>
+
 		<footer>
 			<p>Copyright &copy; 2024 <span class="largeritalics">Chateau Chien</span><br>
 			Send email: <a href="mailto:hao-peng@wang.com">hao-peng@wang.com</a></p>
