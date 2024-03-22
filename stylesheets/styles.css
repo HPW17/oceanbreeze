@@ -260,6 +260,79 @@ figcaption {
 	background-color: Red;
 }
 
+/* contact.html */
+#contact_intro {
+	display: flex;
+	align-items: center;
+	padding-bottom: 1.5em;
+	width: 90%;
+	margin: auto;
+}
+#contact_form {
+	width: 90%;
+	margin: auto;
+}
+#contact_img {
+	width: 150px;
+	height: auto;
+}
+fieldset {
+	background-color: #edc;
+	border-radius: 10px;
+	border: 1px solid #999;
+	padding: 20px;
+}
+legend {
+	font-size: 1.5em;
+	font-weight: bold;
+	padding: 0 0.5em;
+}
+input[type="text"], 
+input[type="email"], 
+input[type="tel"], 
+input[type=submit], 
+select, 
+textarea {
+	width: 100%;
+	padding: 12px;
+	border: 2px solid #856F6F;
+	border-radius: 4px;
+	resize: vertical;
+	box-sizing: border-box;
+	font-size: 1em;
+	font-family: Arial, sans-serif;
+	box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.2);
+}
+textarea {
+	height: 10em;
+}
+label {
+	padding: 12px 12px 12px 0;
+	display: inline-block;
+	font-weight: bold;
+}
+input[type=submit] {
+	background-color: #605252;
+	color: white;
+	padding: 12px 20px;
+	cursor: pointer;
+	font-weight: bold;
+}
+input[type=submit]:hover {
+	background-color: #000080;
+	color: yellow;
+}
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.col-25, .col-75, input[type=submit] {
+	width: 100%;
+	margin-top: 0;
+}
+
 /* 
 	-------------------------------------------------------------------
 	Responsive style settings for larger screen: 
@@ -268,7 +341,7 @@ figcaption {
 	3. navbar from horizontal on small screen to vertical on large screen
 	
 */
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 992px) {
 
 	/* index.html and common styles */
 	body {
@@ -327,5 +400,43 @@ figcaption {
 		/* 4 columns for large screens, reduce to 2 columns in small screens */
 		grid-template-columns: repeat(4, 1fr);
 		background-color: #9cc;
+	}
+
+	/* contact.html */
+	#contact_intro, #contact_form {
+		width: 70%;
+	}
+	#contact_img {
+		width: 250px;
+	}
+	fieldset {
+		background-color: #dfe;
+	}
+	input[type="text"], 
+	input[type="email"], 
+	input[type="tel"], 
+	input[type="submit"], 
+	select, 
+	textarea {
+		font-family: Georgia, serif;
+		border: 2px solid #13778B;
+	}
+	input[type="submit"] {
+		float: right;
+		width: 150px;
+		background-color: #0C535F;
+	}
+	/* make the form to display the label and its corresponding input field 
+	   next to each other on smaller screens and stacked on top of each other 
+	   on larger screens */
+	.col-25 {
+		float: left;
+		width: 25%;
+		margin-top: 6px;
+	}
+	.col-75 {
+		float: left;
+		width: 75%;
+		margin-top: 6px;
 	}
 }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-	ITC2400 Module 8 Assignment: Gridview
+	ITC2400 Assignment
 	Hao-Peng Wang, NUID: 002653367
 -->
 
@@ -80,8 +80,15 @@
 		</div>
 
 		<footer>
-			<p>Copyright &copy; 2024 <span class="largeritalics">Chateau Chien</span><br>
+			<p>Copyright &copy; 2024 <span class="largeritalics">Chateau Chien</span> - <span id="mydate"></span><br>
 			Send email: <a href="mailto:hao-peng@wang.com">hao-peng@wang.com</a></p>
 		</footer>
+
+		<!-- script to add the current date to the footer area -->
+		<script>
+			const d = new Date();
+			const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+			document.getElementById("mydate").innerHTML = months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+		</script>
 	</body>
 </html>

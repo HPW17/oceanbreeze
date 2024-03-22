@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-	ITC2400 Module 8 Assignment: Gridview
+	ITC2400 Assignment
 	Hao-Peng Wang, NUID: 002653367
 -->
 
@@ -34,29 +34,36 @@
 			<main>
 				<h2>Our Graduates</h2>
 				<!-- Grid view images -->
-				<div class="graduates_container">
-					<img src="images/SquareAndtheCat.jpg" alt="Cat and dog graduates" class="img_square">
-					<img src="images/SquareBeagle.jpg" alt="Stern Beagle" class="img_square">
-					<img src="images/LongDiplomadog.jpg" alt="Dog with a diploma" class="img_long">
-					<img src="images/WideDogPack.jpg" alt="Dogs in a row" class="img_wide">
-					<img src="images/SquareHusky.jpg" alt="Husky headshot" class="img_square">
-					<img src="images/SquareJackRussel.jpg" alt="Dog graduate headshot" class="img_square">
-					<img src="images/LongDogWithBooks1.jpg" alt="Cat and dog graduates" class="img_long">
-					<img src="images/SquarePomeranian.jpg" alt="The nerd dog" class="img_square">
-					<img src="images/WideWithOwner.jpg" alt="Bow-tie duo" class="img_wide">
-					<img src="images/Squaretwodogs750.jpg" alt="Dogs, but it's the Shining" class="img_square">
-					<img src="images/SquareWhiteTerrier.jpg" alt="Not selling dog food" class="img_square">
-					<img src="images/SquareMyDogNamedIndy.jpg" alt="This is my dog!" class="img_square mydog">
-				</div>
-				<div id="attribution">
+				<section class="graduates_container">
+					<img src="images/SquareAndtheCat.jpg" class="img_square">
+					<img src="images/SquareBeagle.jpg" class="img_square">
+					<img src="images/LongDiplomadog.jpg" class="img_long">
+					<img src="images/WideDogPack.jpg" class="img_wide">
+					<img src="images/SquareHusky.jpg" class="img_square">
+					<img src="images/SquareJackRussel.jpg" class="img_square">
+					<img src="images/LongDogWithBooks1.jpg" class="img_long">
+					<img src="images/SquarePomeranian.jpg" class="img_square">
+					<img src="images/WideWithOwner.jpg" class="img_wide">
+					<img src="images/Squaretwodogs750.jpg" class="img_square">
+					<img src="images/SquareWhiteTerrier.jpg" class="img_square">
+					<img src="images/SquareMyDogNamedIndy.jpg" class="img_square mydog">
+				</section>
+				<section id="attribution">
 					<p>Attribution: Some images by <a href="https://www.freepik.com">Freepik</a></p>
-				</div>
+				</section>
 			</main>
 		</div>
 
 		<footer>
-			<p>Copyright &copy; 2024 <span class="largeritalics">Chateau Chien</span><br>
+			<p>Copyright &copy; 2024 <span class="largeritalics">Chateau Chien</span> - <span id="mydate"></span><br>
 			Send email: <a href="mailto:hao-peng@wang.com">hao-peng@wang.com</a></p>
 		</footer>
+
+		<!-- script to add the current date to the footer area -->
+		<script>
+			const d = new Date();
+			const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+			document.getElementById("mydate").innerHTML = months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+		</script>
 	</body>
 </html>

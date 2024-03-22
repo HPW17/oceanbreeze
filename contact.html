@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-	ITC2400 Module 8 Assignment: Gridview
+	ITC2400 Assignment
 	Hao-Peng Wang, NUID: 002653367
 -->
 
@@ -32,16 +32,97 @@
 			</nav>
 
 			<main>
-				<section id="contactinfo">
-					<h2>This is the Contacts page.</h2>
-					<img src="images/DogOnPhone.jpg" alt="Dog on the phone" class="fixed_img">
+				<section id="contact_intro">
+					<div>
+						<img src="images/DogOnPhone.jpg" alt="Dog on the phone" id="contact_img">
+					</div>
+					<div>
+						<h2>Let us know how to contact you with the answers you need.</h2>
+						<p>Reach out to us here for any inquiries or to request a callback at your convenience. We're here to assist you! Simply fill out the form below, and we'll get back to you promptly.</p>
+					</div>
+				</section>
+				<!-- 
+					Contact form created below for the user to enter 
+				    related information.
+					I chose the RESPONSIVE FORM layout approach and ensured
+					that the form is responsive, displaying the label and its 
+					corresponding input field next to each other on smaller 
+					screens and stacked on top of each other on larger screens.
+				-->
+				<section id="contact_form">
+					<fieldset>
+					<legend>Contact Us!</legend>
+					<form action="https://webdevbasics.net/scripts/demo.php" method="post">
+						<div class="row">
+							<div class="col-25">
+								<label for="name">Name:</label>
+							</div>
+							<div class="col-75">
+								<input type="text" id="name" name="name" autocomplete="name" required>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-25">
+								<label for="email">E-mail:</label>
+							</div>
+							<div class="col-75">
+								<input type="email" id="email" name="email" autocomplete="email" placeholder="me@example.com" required>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-25">
+								<label for="phone">Phone:</label>
+							</div>
+							<div class="col-75">
+								<input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="999-999-9999" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-25">
+								<label for="preferred_contact">Preferred contact:</label>
+							</div>
+							<div class="col-75">
+								<select id="preferred_contact" name="preferred_contact">
+								<optgroup label="By email">
+									<option value="Email me" selected>Email me</option>
+								</optgroup>
+								<optgroup label="By phone">
+									<option value="Phone me between 1pm-4pm">Phone me between 1pm-4pm</option>
+									<option value="Phone me between 6pm-9pm">Phone me between 6pm-9pm</option>
+								</optgroup>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-25">
+								<label for="question">Question or Concern?</label>
+							</div>
+							<div class="col-75">
+								<textarea id="question" name="question" placeholder="Enter your question or concern here."></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-25">&nbsp;</div>
+							<div class="col-75">
+								<input type="submit" value="Send Now!">
+							</div>
+						</div>
+					</form>
+					</fieldset>
 				</section>
 			</main>
 		</div>
 
 		<footer>
-			<p>Copyright &copy; 2024 <span class="largeritalics">Chateau Chien</span><br>
+			<p>Copyright &copy; 2024 <span class="largeritalics">Chateau Chien</span> - <span id="mydate"></span><br>
 			Send email: <a href="mailto:hao-peng@wang.com">hao-peng@wang.com</a></p>
 		</footer>
+
+		<!-- script to add the current date to the footer area -->
+		<script>
+			const d = new Date();
+			const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+			document.getElementById("mydate").innerHTML = months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+		</script>
 	</body>
 </html>
