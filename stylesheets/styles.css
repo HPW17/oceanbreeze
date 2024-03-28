@@ -214,6 +214,41 @@ figcaption {
 }
 
 /* ourgraduates.html */
+.grad_video_container {
+	margin: 20px auto;
+	padding: 30px 10px;
+	background-color: #ffa;
+	border-radius: 10px;
+	text-align: center;
+	filter: drop-shadow(0 0 0.8rem rgba(0, 0, 0, 0.5));
+}
+.grad_video_container figcaption {
+	display: none;
+}
+.grad_video_container video {
+	width: 270px;
+	height: auto;
+	border-radius: 10px;
+}
+.grad_video_description {
+	margin-left: 0;
+	padding: 30px 20px;
+}
+.grad_video_description a {
+	display: inline-block;
+	margin: 20px 0;
+	padding: 10px 20px;
+	text-decoration: none;
+	background-color: #605252;
+	color: white;
+	font-weight: bold;
+	border-radius: 5px;
+	filter: drop-shadow(0 0 0.8rem rgba(0, 0, 0, 0.5));
+}
+.grad_video_description a:hover {
+	background-color: red;
+	color: yellow;
+}
 .graduates_container {
 	display: grid;
 	/* 2 columns for small screens, change to 4 columns in large screens */
@@ -341,6 +376,14 @@ input[type=submit]:hover {
 	3. navbar from horizontal on small screen to vertical on large screen
 	
 */
+@media screen and (min-width: 768px) {
+	/* ourgraduates.html */
+	.grad_video_container {
+		display: flex;
+		text-align: left;
+	}
+}	
+	
 @media screen and (min-width: 992px) {
 
 	/* index.html and common styles */
@@ -396,6 +439,19 @@ input[type=submit]:hover {
 	}
 
 	/* ourgraduates.html */
+	.grad_video_container {
+		background-color: #9cc;
+	}
+	.grad_video_container video {
+		width: 360px;
+		height: auto;
+	}
+	.grad_video_description {
+		width: 50%;
+	}
+	.grad_video_description a {
+		background-color: #0C535F;
+	}
 	.graduates_container {
 		/* 4 columns for large screens, reduce to 2 columns in small screens */
 		grid-template-columns: repeat(4, 1fr);
