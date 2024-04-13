@@ -54,8 +54,10 @@
 								<p>We're here to assist you with any inquiries or bookings. Reach out to us today for personalized assistance and unforgettable experiences!</p>
 							</div>
 						</div>
+						<!-- FORMS with method POST are not allowed in GitHub, 
+						     will get 405 Not Allowed errors -->
 						<!--form action="https://webdevbasics.net/scripts/demo.php" method="post"-->
-						<form action="confirm.html" method="post">
+						<!--form action="confirm.html" method="post"-->
 							<div class="form_row">
 								<i class="fa-solid fa-user fa-xl form_icon"></i>
 								<input type="text" id="name" name="name" autocomplete="name" placeholder="Name" required>
@@ -72,10 +74,10 @@
 								<textarea id="message" name="message" placeholder="Message"></textarea>
 							</div>
 							<div class="form_row">
-								<input type="button" value="Send Message" onclick="sendMessage()">
+								<input type="submit" value="Send Message" onclick="sendMessage()">
 							</div>
 
-						</form>
+						<!--/form-->
 					</div>
 					<figure id="contact_banner" class="cited_image contact_image">
 						<figcaption>Photo credit: Pexels, Kampus Production</figcaption>
