@@ -500,6 +500,11 @@ function sendMessage() {
 	window.location.href = "confirm.html";
 }
 
+function hideDatePicker() {
+	let book = document.getElementById("book");
+	book.style.display = "none";
+}
+
 function showResponse() {
 	let response = "";
 	let caller = sessionStorage.getItem("caller"); // previous page
