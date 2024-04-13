@@ -497,6 +497,7 @@ function sendMessage() {
 	sessionStorage.setItem("phone", document.getElementById("phone").value);
 	sessionStorage.setItem("message", document.getElementById("message").value);
 	sessionStorage.setItem("caller", "contact");
+	window.location.href = "confirm.html";
 }
 
 function showResponse() {
