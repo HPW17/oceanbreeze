@@ -40,6 +40,40 @@
 		     will have a fictitious TripAdvisor rating on home page -->
 		<div id="placeholder"></div>
 
+		<!-- room reservation section, 
+		     will show a "BOOK NOW" button if this section is out of viewport, 
+			 and clicking on the button will scroll this section back -->
+		<section>
+			<div id="book">
+				<div id="date_picker" onclick="showModalDatePicker(0)">
+					<div id="from_date_picker">
+						<div>
+							<span id="from_date"></span>
+						</div>
+						<div>
+							<span id="from_month"></span><br>
+							<span id="from_weekday"></span>
+						</div>
+					</div>
+					<div id="to_date_picker">
+						<div>
+							<span id="to_date"></span>
+						</div>
+						<div>
+							<span id="to_month"></span><br>
+							<span id="to_weekday"></span>
+						</div>
+					</div>
+				</div>
+				<div id="guests">
+					<button id="button_guests" onclick="showModalGuests()"><span id="num_adults" class="num"></span> Adult<span id="plural_adults"></span>, &nbsp;&nbsp;<span id="num_kids" class="num"></span> Kid<span id="plural_kids"></span></button>
+				</div>
+				<div id="check">
+					<button id="button_check" onclick="checkRoom()">Check Rooms & Rates</button>
+				</div>
+			</div>
+		</section>
+
 		<main>
 			<!-- Form section -->
 			<section id="form_container">
@@ -121,5 +155,6 @@
 
 		<!-- include JavaScript here -->
 		<script src="scripts/common.js"></script>
+		<script>window.onload = hideDatePicker();</script>
 	</body>
 </html>
