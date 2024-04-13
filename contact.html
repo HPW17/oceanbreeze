@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+	ITC2400 Signature Assignment
+	Hao-Peng Wang, NUID: 002653367
+-->
+
+<html lang="en">
+	<head>
+		<title>Contact Us</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Hao-Peng Wang">
+		<meta name="description" content="Contact Ocean Breeze Resort for inquiries, reservations, and assistance. Our friendly staff is here to help you plan the perfect getaway.">
+		<meta name="keywords" content="contact us, Ocean Breeze Resort, reservations, inquiries, assistance, customer service">
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="styles/styles.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Titan+One&display=swap" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/17168e035e.js" crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+		<!-- navbar, will collapse to hamburger on smaller screens -->
+		<header>
+			<nav id="topNav">
+				<img src="images/logo.png" alt="Ocean Breeze Resort logo" onclick="window.location.href='index.html'">
+				<a href="index.html">Home</a>
+				<a href="rooms.html">Rooms</a>
+				<a href="dining.html">Dining</a>
+				<a href="amenities.html">Amenities</a>
+				<a href="offers.html">Offers</a>
+				<span>Contact Us</span>
+				<!--a href="javascript:void(0);" id="CTA" onclick="scrollToBook()">BOOK NOW</a-->
+				<a href="javascript:void(0);" id="hamlogo" onclick="hamburger()"><i class="fa-solid fa-bars fa-2xl"></i></a>
+			</nav>
+		</header>
+
+		<!-- put a gap between navbar and hero image, 
+		     will have a fictitious TripAdvisor rating on home page -->
+		<div id="placeholder"></div>
+
+		<main>
+			<!-- Form section -->
+			<section id="form_container">
+				<div class="featured space">
+					<div id="contact_form">
+						<div id="form_welcome">
+							<img src="images/banner_contact_thumb.jpg" alt="Smiling staff" id="form_thumb" class="fadein">
+							<!-- Photo credit: Pexels, Kampus Production 
+							https://www.pexels.com/photo/cheerful-ethnic-waiter-in-apron-standing-against-street-cafe-5920775/ -->
+							<div>
+								<h2>We'd love to hear from you!</h2>
+								<p>We're here to assist you with any inquiries or bookings. Reach out to us today for personalized assistance and unforgettable experiences!</p>
+							</div>
+						</div>
+						<!--form action="https://webdevbasics.net/scripts/demo.php" method="post"-->
+						<form action="confirm.html" method="post">
+							<div class="form_row">
+								<i class="fa-solid fa-user fa-xl form_icon"></i>
+								<input type="text" id="name" name="name" autocomplete="name" placeholder="Name" required>
+							</div>
+							<div class="form_row">
+								<i class="fa-solid fa-envelope fa-xl form_icon"></i>
+								<input type="email" id="email" name="email" autocomplete="email" placeholder="Email" required>
+							</div>
+							<div class="form_row">
+								<i class="fa-solid fa-phone fa-xl form_icon"></i>
+								<input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="Phone 999-999-9999" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Phone number format: 999-999-9999">
+							</div>
+							<div class="form_row">
+								<textarea id="message" name="message" placeholder="Message"></textarea>
+							</div>
+							<div class="form_row">
+								<input type="submit" value="Send Message" onclick="sendMessage()">
+							</div>
+
+						</form>
+					</div>
+					<figure id="contact_banner" class="cited_image contact_image">
+						<figcaption>Photo credit: Pexels, Kampus Production</figcaption>
+						<!-- Photo credit: Pexels, Kampus Production 
+						https://www.pexels.com/photo/cheerful-ethnic-waiter-in-apron-standing-against-street-cafe-5920775/ -->
+						<img src="images/banner_contact.jpg" alt="Smiling staff" class="fadein">
+					</figure>
+				</div>
+			</section>
+		</main>
+
+		<!-- footer section, 
+		     clicking on the address will scroll to maps/location section, 
+             clicking on the phone and email will link to corresponding actions, 
+             clicking on the social media icons will link to corresponding sites -->
+		<footer>
+			<div id="footer_container">
+				<div id="footer_contact_us">
+					<h3>CONTACT US</h3>
+					<div id="footer_contact_us_content">
+						<h2>Ocean Breeze Resort</h2>
+						<p><i class="fa-solid fa-house"></i><a href="javascript:void(0);" onclick="scrollToMap()">The Address of Ocean Breeze Resort</a></p>
+						<p><i class="fa-solid fa-phone"></i><a href="tel:+11234567890">+1-123-456-7890</a></p>
+						<p><i class="fa-solid fa-envelope"></i><a href="mailto:reservation@oceanbreezeresort.com">reservation@oceanbreezeresort.com</a></p>
+					</div>
+				</div>
+				<div id="footer_follow_us">
+					<h3>FOLLOW US</h3>
+					<p><a href="https://www.facebook.com"><i class="fa-brands fa-square-facebook fa-2xl"></i></a>
+					<a href="https://www.twitter.com"><i class="fa-brands fa-square-x-twitter fa-2xl"></i></a>
+					<a href="https://www.instagram.com"><i class="fa-brands fa-square-instagram fa-2xl"></i></a>
+					<a href="https://www.linkedin.com"><i class="fa-brands fa-linkedin fa-2xl"></i></a></p>
+				</div>
+				<div id="footer_container_copyright">
+					<p>&copy; 2024 Ocean Breeze Resort. All Rights Reserved.</p>
+				</div>
+			</div>
+		</footer>
+
+		<div id="progress"></div>
+
+		<!-- include JavaScript here -->
+		<script src="scripts/common.js"></script>
+	</body>
+</html>

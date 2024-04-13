@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<!--
+	ITC2400 Signature Assignment
+	Hao-Peng Wang, NUID: 002653367
+-->
+
+<html lang="en">
+	<head>
+		<title>Special Offers</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Hao-Peng Wang">
+		<meta name="description" content="Explore our exclusive special offers at Ocean Breeze Resort. Enjoy discounted rates, complimentary amenities, and unforgettable experiences during your stay. Book now and make your dream vacation a reality.">
+		<meta name="keywords" content="special offers, deals, promotions, discounts, vacation packages, Ocean Breeze Resort">
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="styles/styles.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Titan+One&display=swap" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/17168e035e.js" crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+		<!-- navbar, will collapse to hamburger on smaller screens -->
+		<header>
+			<nav id="topNav">
+				<img src="images/logo.png" alt="Ocean Breeze Resort logo" onclick="window.location.href='index.html'">
+				<a href="index.html">Home</a>
+				<a href="rooms.html">Rooms</a>
+				<a href="dining.html">Dining</a>
+				<a href="amenities.html">Amenities</a>
+				<span>Offers</span>
+				<a href="contact.html">Contact Us</a>
+				<a href="javascript:void(0);" id="CTA" onclick="scrollToBook()">BOOK NOW</a>
+				<a href="javascript:void(0);" id="hamlogo" onclick="hamburger()"><i class="fa-solid fa-bars fa-2xl"></i></a>
+			</nav>
+		</header>
+
+		<!-- put a gap between navbar and hero image, 
+		     will have a fictitious TripAdvisor rating on home page -->
+		<div id="placeholder"></div>
+
+		<!-- hero image section -->
+		<section id="hero">
+			<div class="hero_title2">
+				<h1>Explore Our Exclusive Offers</h1>
+				<p>Discover unbeatable deals and exclusive packages at Ocean Breeze Resort. Your dream vacation awaits. Book now and save big!</p>
+			</div>
+			<!-- contain the citing info with figure/figcaption tag -->
+			<figure class="banner_image">
+				<figcaption>Photo credit: Pexels, Kindel Media</figcaption>
+				<img src="images/banner_offers.jpg" alt="Smiling girls at pool">
+				<!-- Photo credit: Pexels, Kindel Media 
+				https://www.pexels.com/photo/women-in-bikinis-smiling-7294595/ -->
+			</figure>
+		</section>
+
+		<!-- room reservation section, 
+		     will show a "BOOK NOW" button if this section is out of viewport, 
+			 and clicking on the button will scroll this section back -->
+		<section>
+			<div id="book">
+				<div id="date_picker" onclick="showModalDatePicker(0)">
+					<div id="from_date_picker">
+						<div>
+							<span id="from_date"></span>
+						</div>
+						<div>
+							<span id="from_month"></span><br>
+							<span id="from_weekday"></span>
+						</div>
+					</div>
+					<div id="to_date_picker">
+						<div>
+							<span id="to_date"></span>
+						</div>
+						<div>
+							<span id="to_month"></span><br>
+							<span id="to_weekday"></span>
+						</div>
+					</div>
+				</div>
+				<div id="guests">
+					<button id="button_guests" onclick="showModalGuests()"><span id="num_adults" class="num"></span> Adult<span id="plural_adults"></span>, &nbsp;&nbsp;<span id="num_kids" class="num"></span> Kid<span id="plural_kids"></span></button>
+				</div>
+				<div id="check">
+					<button id="button_check" onclick="checkRoom()">Check Rooms & Rates</button>
+				</div>
+			</div>
+
+			<!-- modal for date picker, 
+			     will show calendars of two months and allows users 
+				 to select the start and end dates of reservation -->
+			<div id="modal_date_picker" class="modal">
+				<div id="modal1" class="modal_content">
+					<div class="modal_title_container">
+						<i class="fa-regular fa-circle-xmark fa-2xl modal_close" id="btn_date_picker_close"></i>
+						<h3 class="modal_title">Select Dates</h3>
+					</div>
+					<div id="calendar_arrow_list">
+						<i class="fa-regular fa-circle-left fa-2xl disabledBtn" id="calendar_arrow_left"></i>
+						<i class="fa-regular fa-circle-right fa-2xl" id="calendar_arrow_right"></i>
+					</div>
+					<div class="modal_date_container">
+						<div id="month_left" class="month_container"></div>
+						<div id="month_right" class="month_container"></div>
+					</div>
+					<div class="modal_button_container">
+						<button id="modal_date_picker_cancel" class="modal_button">Cancel</button>
+						<button id="modal_date_picker_done" class="modal_button">Done</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- modal for guests number selection, 
+			     allows users to enter the number of adults and kids -->
+			<div id="modal_guests" class="modal">
+				<div id="modal2" class="modal_content">
+					<div class="modal_title_container">
+						<i class="fa-regular fa-circle-xmark fa-2xl modal_close" id="btn_guests_close"></i>
+						<h3 class="modal_title">Guests Number</h3>
+						<p>At least one adult, total guests does not exceed 4.</p>
+					</div>
+					<div class="modal_guests_container">
+						<div>
+							<span class="guests_label">Adults</span>
+							<i class="fa-regular fa-square-minus fa-2xl" id="adults_minus"></i>
+							<span class="guests_num" id="guests_adults_num"></span>
+							<i class="fa-regular fa-square-plus fa-2xl" id="adults_plus"></i>
+						</div>
+						<div>
+							<span class="guests_label">Kids</span>
+							<i class="fa-regular fa-square-minus fa-2xl" id="kids_minus"></i>
+							<span class="guests_num" id="guests_kids_num"></span>
+							<i class="fa-regular fa-square-plus fa-2xl" id="kids_plus"></i>
+						</div>
+					</div>
+					<div class="modal_button_container">
+						<button id="modal_guests_cancel" class="modal_button">Cancel</button>
+						<button id="modal_guests_done" class="modal_button">Done</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ########## main information section ########## -->
+		<main>
+
+			<!-- Advance Purchase section -->
+			<section class="bg_gray">
+				<div class="featured">
+					<figure class="cited_image featured_image">
+						<figcaption>Photo credit: Pexels, Gustavo Fring</figcaption>
+						<!-- Photo credit: Pexels, Gustavo Fring 
+						https://www.pexels.com/photo/attractive-young-woman-with-shopping-bags-4173108/ -->
+						<img src="images/offers_discount.jpg" alt="Advance Purchase" class="fadein">
+					</figure>
+					<div class="featured_desc">
+						<h2>Honors Discount Advance Purchase</h2>
+						<p>It pays to plan ahead! Experience the ultimate in savings and luxury with our Honors Discount Advance Purchase offer at Ocean Breeze Resort. Book your stay in advance and enjoy exclusive discounts on our premium accommodations, saving up to 20% off our Best Available Rate.</p>
+						<p>Whether you're planning a romantic getaway or a family vacation, our Honors Discount package ensures you'll enjoy exceptional value without compromising on comfort. As an honored guest, you'll have access to our world-class amenities and personalized service, all while enjoying significant savings on your stay. Take advantage of this special offer today and elevate your experience at Ocean Breeze Resort.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Breakfast Included section -->
+			<section>
+				<div class="featured reverse">
+					<figure class="cited_image featured_image">
+						<figcaption>Photo credit: Pexels, Moussa Idrissi</figcaption>
+						<!-- Photo credit: Pexels, Moussa Idrissi 
+						https://www.pexels.com/photo/breakfast-on-table-by-swimming-pool-in-hotel-19239912/ -->
+						<img src="images/offers_breakfast.jpg" alt="Breakfast Included" class="fadein">
+					</figure>
+					<div class="featured_desc">
+						<h2>Breakfast Included</h2>
+						<p>Start your day off right with our Breakfast Included package at Ocean Breeze Resort. Wake up to a delicious complimentary breakfast served fresh every morning, featuring a variety of options to suit every palate. From hearty classics to healthy choices, our breakfast spread has something for everyone to enjoy. Savor the flavors of our signature dishes while taking in breathtaking views of the surrounding landscape.</p>
+						<p>Whether you're fueling up for a day of adventure or simply indulging in a leisurely morning meal, our Breakfast Included package ensures you'll start your day on the right foot. Book your stay with us and treat yourself to a delightful breakfast experience at Ocean Breeze Resort.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Beachside Spa section -->
+			<section class="bg_gray">
+				<div class="featured">
+					<figure class="cited_image featured_image">
+						<figcaption>Photo credit: Unsplash, Adrian Motroc 
+						</figcaption>
+						<!-- Photo credit: Unsplash, Adrian Motroc 
+						https://unsplash.com/photos/person-lying-down-on-white-surface-DhIarbBYCWU -->
+						<img src="images/offers_spa.jpg" alt="Beachside Spa" class="fadein">
+					</figure>
+					<div class="featured_desc">
+						<h2>Beachside Spa</h2>
+						<p>Indulge in relaxation and rejuvenation with our Beachside Spa package at Ocean Breeze Resort. Immerse yourself in tranquility as you unwind with a variety of luxurious spa treatments designed to melt away stress and tension.</p>
+						<p>From soothing massages to invigorating facials, our skilled therapists will pamper you from head to toe, leaving you feeling refreshed and revitalized. As you bask in the serene ambiance of our beachside spa, let the calming sounds of the ocean waves soothe your soul while our expert team takes care of your every need. Treat yourself to the ultimate spa getaway and experience pure bliss at Ocean Breeze Resort.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Health Massage section -->
+			<section>
+				<div class="featured reverse">
+					<figure class="cited_image featured_image">
+						<figcaption>Photo credit: Pexels, Jonathan Borba</figcaption>
+						<!-- Photo credit: Pexels, Jonathan Borba 
+						https://www.pexels.com/zh-tw/photo/19641826/ -->
+						<img src="images/offers_massage.jpg" alt="Health Massage" class="fadein">
+					</figure>
+					<div class="featured_desc">
+						<h2>Health Massage</h2>
+						<p>Experience the healing power of touch with our Health Massage package at Ocean Breeze Resort. Designed to promote wellness and relaxation, our health massage treatments are tailored to address your specific needs and preferences.</p>
+						<p>Whether you're seeking relief from muscle tension, chronic pain, or simply looking to unwind after a long day, our skilled therapists will customize each session to ensure maximum comfort and effectiveness. From traditional Swedish massages to deep tissue therapies, we offer a range of techniques to help you achieve optimal health and vitality. Treat yourself to a rejuvenating massage experience and embark on a journey to wellness at Ocean Breeze Resort.</p>
+					</div>
+				</div>
+			</section>
+
+		</main>
+
+		<!-- footer section, 
+		     clicking on the address will scroll to maps/location section, 
+             clicking on the phone and email will link to corresponding actions, 
+             clicking on the social media icons will link to corresponding sites -->
+		<footer>
+			<div id="footer_container">
+				<div id="footer_contact_us">
+					<h3>CONTACT US</h3>
+					<div id="footer_contact_us_content">
+						<h2>Ocean Breeze Resort</h2>
+						<p><i class="fa-solid fa-house"></i><a href="javascript:void(0);" onclick="scrollToMap()">The Address of Ocean Breeze Resort</a></p>
+						<p><i class="fa-solid fa-phone"></i><a href="tel:+11234567890">+1-123-456-7890</a></p>
+						<p><i class="fa-solid fa-envelope"></i><a href="mailto:reservation@oceanbreezeresort.com">reservation@oceanbreezeresort.com</a></p>
+					</div>
+				</div>
+				<div id="footer_follow_us">
+					<h3>FOLLOW US</h3>
+					<p><a href="https://www.facebook.com"><i class="fa-brands fa-square-facebook fa-2xl"></i></a>
+					<a href="https://www.twitter.com"><i class="fa-brands fa-square-x-twitter fa-2xl"></i></a>
+					<a href="https://www.instagram.com"><i class="fa-brands fa-square-instagram fa-2xl"></i></a>
+					<a href="https://www.linkedin.com"><i class="fa-brands fa-linkedin fa-2xl"></i></a></p>
+				</div>
+				<div id="footer_container_copyright">
+					<p>&copy; 2024 Ocean Breeze Resort. All Rights Reserved.</p>
+				</div>
+			</div>
+		</footer>
+
+		<div id="progress"></div>
+
+		<!-- include JavaScript here -->
+		<script src="scripts/common.js"></script>
+	</body>
+</html>

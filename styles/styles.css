@@ -1,0 +1,1068 @@
+@charset "utf-8";
+/*
+Typography
+font-family: "Roboto", sans-serif;
+font-family: "Titan One", sans-serif;
+
+Color Palette
+Rich Black	#011627	rgb(1, 22, 39)
+Tree Brown	#6B492B	rgb(107, 73, 43)
+Sea Salt	#F6F7F8	rgb(246, 247, 248)
+Water Blue	#74CCF4	rgb(116 204, 244)
+Ocean Blue	#064273 rgb(6, 66, 115)
+*/
+
+/** General layout ********************************************************/
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "Roboto", sans-serif;
+}
+h1, h2 {
+	font-family: "Titan One", sans-serif;
+	font-weight: normal;
+}
+figure.banner_image {
+	position: absolute;
+	top: 50%; 
+	left: 50%; 
+	transform: translate(-50%, -50%); 
+	width: 100%; 
+	height: 100%; 
+	overflow: hidden; 
+}
+figure.cited_image {
+	position: relative;
+}
+figure.featured_image img {
+	width: 320px;
+	height: auto;
+	border: 1px solid black;
+	filter: drop-shadow(0 0 0.5em black);
+}
+figure.banner_image img {
+	width: 100%; 
+	height: 100%; 
+	object-fit: cover; 
+}
+figure.room_image img {
+	width: 100%;
+	height: 100%;
+}
+figure.contact_image img {
+	width: 240px;
+	height: auto;
+}
+figure figcaption {
+	/* put citation at the bottom of the image with proper background color */
+	position: absolute;
+	bottom: 5px;
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+	color: #064273;
+	font-size: 0.8em;
+	font-weight: bold;
+	display: inline-block;
+	padding: 3px 5px;
+	border-top: 2px solid #F6F7F8;
+	white-space: nowrap;
+	text-shadow: 0 0 0.5em #011627;
+	color: #F6F7F8;
+	z-index: 1;
+}
+figure figcaption a {
+	color: #064273;
+	font-weight: normal;
+}
+figure figcaption a:hover {
+	color: red;
+}
+main section {
+	padding: 50px 0;
+}
+.featured {
+	width: 80%;
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 30px 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.featured_desc {
+	flex: 1;
+	padding-left: 40px;
+}
+.featured_desc h2 {
+	margin: 35px 20px 25px 20px;
+}
+.featured_desc p{
+	margin: 15px 20px;
+}
+.featured_desc ul {
+	margin: 15px 0 15px 60px;
+	text-align: left;
+}
+.bg_gray {
+	background-color: #eee;
+}
+.reverse {
+	flex-direction: row-reverse;
+}
+.space {
+	justify-content: space-evenly;
+}
+.fadein {
+	/* apply animation 'fade-in' and retain the last keyframe after animation */
+	animation: fade-in linear forwards;  
+	animation-timeline: view(); 
+	animation-range: entry; /* triggered when it enters the viewport */
+	/* initially 80% of original size and half-transparent */
+	scale: 0.8; 
+	opacity: 0.5;
+}
+@keyframes fade-in {
+	/* change to 100% of original size and fully visible */
+	to {
+		scale: 1.0;
+		opacity: 1.0;
+	}
+}
+
+/** NavBar ****************************************************************/
+#topNav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	overflow: hidden;
+	background-color: #011627;
+	height: 4.5rem;
+	z-index: 999;
+}
+#topNav a, #topNav span {
+	float: left;
+	display: block;
+	color: #F6F7F8;
+	text-align: center;
+	padding: 0.3rem 0.2rem;
+	margin: 2rem 0.5rem 0.3rem 0.5rem;
+	text-decoration: none;
+	font-size: 17px;
+	border-bottom: 3px solid #011627;
+	transition: 0.2s;
+}
+#topNav a:hover {
+	color: yellow;
+	border-bottom: 3px solid yellow;
+}
+#topNav span {
+	color: #F6F7F8;
+	font-weight: bold;
+	border-bottom: 3px solid #888;
+}
+a#CTA {
+	float: right;
+	padding: 0.3rem 1rem;
+	margin: 1.3rem 2rem;
+	background-color: #F6F7F8;
+	color: #011627;
+	font-weight: bold;
+	border: 0;
+	display: none;
+}
+a#CTA:hover {
+	background-color: yellow;
+	color: #011627;
+	border: 0;
+}
+a#hamlogo {
+	display: none;
+	float: right;
+	margin: 1.3rem 2rem;
+}
+a#hamlogo:hover {
+	border-bottom: 3px solid #011627;
+	color: yellow;
+}
+#topNav img {
+	float: left;
+	width: 50px;
+	height: auto;
+	margin: 0.5rem 1rem 0.5rem 2rem;
+}
+#topNav img:hover {
+	cursor: pointer;
+}
+
+/** TripAdvisor rating ****************************************************/
+#section_tripadvisor {
+	font-size: 0.8em;
+	padding: 0 0 1em 3em;
+	display: flex;
+	align-items: flex-end;
+}
+#tripadvisor_left {
+	border-right: 1px solid #011627;
+	padding-right: 10px;
+}
+#tripadvisor_rating {
+	display: flex;
+	align-items: center;
+	color: blue;
+}
+#tripadvisor_rating i {
+	margin: 0 1px;
+}
+#tripadvisor_logo {
+	width: 25px;
+	height: auto;
+	margin: 0 5px 2px 0;
+}
+#tripadvisor_right {
+	padding-left: 10px;
+}
+#tripadvisor_right p {
+	margin: 5px 0 0 5px;
+}
+#tripadvisor_right a {
+	color: #011627;
+}
+#tripadvisor_right a:hover {
+	color: red;
+}
+
+/** Hero ******************************************************************/
+#placeholder {
+	display: flex;
+	align-items: flex-end;
+	height: 9rem;
+}
+#hero {
+	position: relative;
+	height: calc(100vh - 15rem);
+	overflow: hidden;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+}
+#hero_logo {
+	position: absolute;
+	width: 120px;
+	height: auto;
+	top: 25%;
+	left: 48%;
+	transform: translate(-25%, -48%);
+	filter: drop-shadow(0 0 0.5em black);
+	border: 8px solid white;
+	border-radius: 50%;
+	text-align: center;
+	z-index: 1;
+}
+#hero_logo img {
+	width: 100%;
+}
+.hero_title1 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	text-shadow: 0 0 0.5em #011627;
+	color: #F6F7F8;
+	font-size: 1.5em;
+	font-weight: bold;
+	z-index: 1;
+}
+.hero_title1 h1 {
+	white-space: nowrap;
+	font-size: 3rem;
+}
+.hero_title2 {
+	position: absolute;
+	top: 30%;
+	left: 10%;
+	width: 50%;
+	transform: translate(-10%, -30%);
+	text-align: left;
+	text-shadow: 0 0 0.5em #011627;
+	color: #F6F7F8;
+	font-size: 1.5em;
+	font-weight: bold;
+	z-index: 1;
+}
+.hero_title2 h1 {
+	white-space: nowrap;
+	font-size: 2rem;
+	margin-bottom: 20px;
+}
+
+/** Book Now **************************************************************/
+#book {
+	height: 6rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding-bottom: 10px;
+	/*border-bottom: 1px solid lightgray;
+	background-color: #dd8;*/
+}
+#choose_room {
+	font-size: 1.1em;
+	font-weight: bold;
+	color: #B00;
+	margin: 20px 0;
+}
+#date_picker {
+	display: flex;
+	padding-right: 10px;
+}
+#date_picker, #guests, #check {
+	margin: 5px 0;
+}
+#from_date_picker, #to_date_picker {
+	display: flex;
+	align-items: center;
+	padding: 0 10px;
+	cursor: pointer;
+}
+#to_date_picker {
+	border-left: 1px solid lightgray;
+}
+#date_picker:hover #from_date, 
+#date_picker:hover #to_date {
+  color: #A50021;
+}
+#from_date, #to_date {
+	font-size: 2.5em;
+	font-weight: bold;
+	color: blue;
+	padding: 0 5px;
+}
+#from_month, #to_month {
+	font-weight: bold;
+}
+#from_weekday, #to_weekday {
+	font-weight: 300;
+}
+#button_guests, #button_check {
+	border: 1px solid #011627;
+	border-radius: 5px;
+	padding: 0.5rem 1rem;
+	margin-right: 6px;
+	font-size: 1rem;
+	background-color: #F6F7F8;
+	cursor: pointer;
+}
+#button_guests, #button_check {
+	width: 200px;
+}
+#button_guests:hover {
+	background-color: #064273;
+	color: #F6F7F8;
+}
+#button_guests:hover .num {
+	color: yellow;
+}
+.num {
+	font-weight: bold;
+	color: blue;
+}
+#button_check {
+	background-color: #A50021;
+	color: #F6F7F8;
+	transition: 0.5s;
+	filter: drop-shadow(0 0 0.5em gray);
+}
+#button_check:hover {
+	background-color: #064273;
+}
+
+/** #modal_date_picker ****************************************************/
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	/* make the background darker and blur */
+	background-color: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(5px);
+	//filter: brightness(0.8);
+}
+.modal_content {
+	background-color: #F6F7F8;
+	margin: 10% auto;
+	padding: 20px;
+	border: 1px solid #gray;
+	border-radius: 10px;
+	text-align: center;
+}
+#modal1 {
+	width: 700px;
+}
+#modal2 {
+	width: 500px;
+}
+.modal_title_container {
+	padding: 10px 0;
+	border-bottom: 1px solid gray;
+}
+.modal_title_container p {
+	font-size: 0.8rem;
+}
+.modal_close {
+	float: right;
+	cursor: pointer;
+}
+.modal_close:hover {
+	color: blue;
+}
+#calendar_arrow_list {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	height: 30px;
+	padding-top: 20px;
+}
+#calendar_arrow_left, #calendar_arrow_right {
+	display: block;
+}
+#calendar_arrow_left:not(.disabledBtn):hover, 
+#calendar_arrow_right:not(.disabledBtn):hover {
+	color: blue;
+	cursor: pointer;
+}
+.disabledBtn {
+	color: #999;
+	cursor: default;
+}
+.modal_date_container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	text-align: center;
+	border-bottom: 1px solid gray;
+}
+.modal_guests_container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	padding-bottom: 20px;
+	border-bottom: 1px solid gray;
+	user-select: none; // avoid mis-select
+}
+.month_container {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 3px;
+	grid-auto-flow: dense;
+	margin: 30px;
+}
+.month_title {
+	grid-column: 1 / 8;
+	font-size: 1.2em;
+	font-weight: bold;
+	padding: 10px;
+}
+.weekday_name_item {
+	font-size: 0.7rem;
+	font-weight: bold;
+}
+.calendar_item {
+	display: inline-block;
+	height: 36px;
+	width: 36px;
+	line-height: 32px;
+	text-align: center;
+	border-radius: 50%;
+	border: 2px solid #F6F7F8;
+	cursor: pointer;
+}
+.calendar_item:not(.passed):hover {
+	border: 2px solid blue;
+}
+.today {
+	font-weight: 900;
+	color: blue;
+}
+.passed {
+	color: #aaa;
+	cursor: default;
+}
+.selected_date_item {
+	background-color: blue;
+	color: #F6F7F8;
+}
+.modal_button {
+	border: 1px solid #011627;
+	border-radius: 5px;
+	padding: 0.5rem 1rem;
+	margin: 10px;
+	font-size: 1rem;
+	background-color: #F6F7F8;
+	cursor: pointer;
+	transition: 0.5s;
+	width: 100px;
+}
+.modal_button:hover {
+	background-color: #011627;
+	color: #F6F7F8;
+}
+.guests_label {
+	display: inline-block;
+	width: 60px;
+	font-weight: bold;
+	text-align: right;
+	padding: 30px 0 15px 0;
+	margin-right: 30px;
+}
+.guests_num {
+	display: inline-block;
+	width: 30px;
+	text-align: center;
+}
+#adults_minus:not(.disabledBtn):hover, 
+#adults_plus:not(.disabledBtn):hover, 
+#kids_minus:not(.disabledBtn):hover, 
+#kids_plus:not(.disabledBtn):hover {
+	color: blue;
+	cursor: pointer;
+}
+
+/** Slideshow *************************************************************
+ *  This is modified from W3Schools example, added controls for dots/thumbs 
+ *  and JavaScript for auto-switching to next slide every 5 seconds.
+ **************************************************************************/
+#slideshow_container {
+	box-sizing: border-box;
+	position: relative;
+	margin: auto;
+}
+#slideshow_container img {
+	vertical-align: middle;
+}
+.ftslides {
+	display: none;
+}
+.ftslides img {
+	width: 100%;
+}
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 40%;
+	transform: translateY(-40%);
+	width: auto;
+	margin-top: -22px;
+	padding: 16px;
+	color: #064273;
+	font-weight: bold;
+	font-size: 2.5em;
+	background-color: rgba(246,247,248,0.8);
+	transition: 0.6s ease;
+	border-radius: 0 20px 20px 0;
+	user-select: none;
+}
+.next {
+	right: 0;
+	border-radius: 20px 0 0 20px;
+}
+.prev:hover, .next:hover {
+	background-color: rgba(6,66,115,0.8);
+	color: white;
+}
+.slider_number {
+	background-color: #011627;
+	color: white;
+	padding: 8px 12px;
+	position: absolute;
+	top: 50px;
+}
+.caption_container {
+	position: absolute;
+	top: 70%;
+	left: 50%;
+	transform: translate(-50%,-70%);
+	padding: 10px 0;
+	text-align: center;
+	text-height: 1.4em;
+	font-size: 1.2em;
+	font-weight: bold;
+	color: #F6F7F8;
+	white-space: nowrap;
+	text-shadow: 0 0 0.5em #011627;
+}
+.credit {
+	font-size: 0.7em;
+	font-weight: normal;
+	padding: 0 10px;
+	border-top: 2px solid #F6F7F8;
+}
+.slideshow_thumb {
+	background-color: darkgray;
+}
+.thumb_row {
+	margin: 0 auto;
+	display: table;
+	clear: both;
+}
+.thumb_item {
+	float: left;
+	max-width: 150px;
+	background-color: black;
+	border: 1px solid darkgray;
+	cursor: pointer;
+}
+.demo {
+	opacity: 0.6;
+}
+.active, .demo:hover {
+	opacity: 1.0;
+}
+#slideshow_dots {
+	text-align: center;
+	position: absolute;
+	top: 15%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.dot {
+	cursor: pointer;
+	height: 15px;
+	width: 15px;
+	margin: 0 6px;
+	background-color: #F6F7F8;
+	border-radius: 50%;
+	display: inline-block;
+	border: 1px solid #011627;
+	transition: background-color 0.6s ease;
+}
+.active, .dot:hover {
+	background-color: #064273;
+}
+.fade {
+	animation-name: fade;
+	animation-duration: 1.5s;
+}
+@keyframes fade {
+	from {opacity: .4}
+	to {opacity: 1}
+}
+
+/** Rooms grid display ****************************************************/
+#rooms_heading {
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+}
+#rooms_container {
+	width: 80%;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 50px 0;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 30px;
+}
+.room {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	background-color: #F6F7F8;
+	border: 1px solid darkgray;
+}
+.room_desc {
+	padding: 30px;
+	margin-bottom: 60px;
+}
+.room_desc h3 {
+	margin-bottom: 15px;
+}
+.room input[type="button"] {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	font-size: 1rem;
+	font-weight: bold;
+	height: 40px;
+	border: 1px solid darkgray;
+}
+.room input[type="button"]:not(.exceed) {
+	color: #F6F7F8;
+	background-color: red;
+	transition: 0.2s;
+	cursor: pointer;
+}
+.room input[type="button"]:not(.exceed):hover {
+	background-color: #064273;
+}
+.room input[type="button"].exceed {
+	color: black;
+	background-color: darkgray;
+	cursor: default;
+}
+
+/** Contact Us Form *******************************************************/
+#form_container {
+	margin-top: -80px;
+}
+#contact_form {
+	font-size: 1rem;
+	flex: 1;
+	max-width: 400px;
+}
+#contact_form p {
+	padding: 20px 0 30px 0;
+}
+#form_welcome {
+	display: flex;
+}
+#form_thumb {
+	width: 100px;
+	height: 150px;
+	margin-right: 30px;
+	display: none;
+}
+.form_row {
+	position: relative;
+}
+.form_icon {
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+#contact_form input, 
+#contact_form textarea {
+	font-size: 1.1rem;
+	padding: 10px 20px 10px 40px;
+	margin: 0.5rem 0;
+	background-color: #ddf;
+	border-radius: 20px;
+	border: 1px solid #aaa;
+	width: 80%;
+}
+#contact_form textarea {
+	padding: 10px 20px 10px 10px;
+	box-sizing: border-box;
+	height: 8em;
+	/*resize: vertical;*/
+	resize: none;
+}
+#contact_form input[type="submit"] {
+	background-color: #064273;
+	color: #F6F7F8;
+	padding: 0.5rem 1rem;
+	border-radius: 5px;
+	border: 1px solid black;
+	curson: pointer;
+	filter: drop-shadow(0 0 0.5em gray);
+	transition: 0.2s;
+}
+#contact_form input[type="submit"]:hover {
+	background-color: red;
+}
+
+/** Confirm/Thank You page ************************************************/
+#confirm_page {
+	background-color: #011627;
+	color: #F6F7F8;
+}
+#thankyou {
+	height: 80px;
+	text-align: center;
+}
+#thankyou h1 {
+	color: #F6F7F8;
+	font-size: 2em;
+	padding: 20px 50px;
+	margin: 0 auto;
+	display: inline-block;
+	border-bottom: 2px solid white;
+}
+#notebook {
+	position: relative;
+	text-align: center;
+	margin-top: 30px;
+}
+#notebook_img {
+	width: 90%;
+	max-width: 640px;
+	height: 420px;
+}
+#notebook_msg {
+	position: absolute;
+	max-width: 400px;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%,-30%);
+	color: #011627;
+}
+#notebook_msg p {
+	padding: 10px 0;
+}
+#response {
+	white-space: pre-wrap;
+	width: 80%;
+	margin: 0 auto;
+	text-align: left;
+}
+#back {
+	position: absolute;
+	bottom: 20px;
+	left: calc(50% + 160px);
+	padding: 0.5em 1.5em;
+	font-size: 1rem;
+	font-weight: bold;
+	cursor: pointer;
+	background-color: #064273;
+	color: #F6F7F8;
+	border-radius: 5px;
+	filter: drop-shadow(0 0 0.5em gray);
+	transition: 0.2s;
+}
+#back:hover {
+	background-color: red;
+}
+
+/** Footer ****************************************************************/
+footer {
+	background-color: #011627;
+	color: #F6F7F8;
+	text-align: center;
+	font-size: 0.8em;
+	white-space: nowrap;
+}
+footer a {
+	color: #F6F7F8;
+	text-decoration: none;
+	border-bottom: 2px solid #011627;
+}
+footer a:hover {
+	color: yellow;
+	border-bottom: 2px solid yellow;
+}
+#footer_container {
+	width: 70%;
+	margin: auto;
+	padding-top: 60px;
+	padding-bottom: 10px;
+}
+#footer_contact_us {
+	text-align: left;
+	margin: 0 2rem;
+	float: left;
+}
+#footer_contact_us h3 {
+	margin: 20px 0;
+}	
+#footer_contact_us_content {
+	border-left: 3px solid #F6F7F8;
+	padding: 0 1.5rem;
+}
+#footer_contact_us p {
+	margin: 10px 0;
+}
+#footer_contact_us i {
+	margin-right: 10px;
+}
+#footer_follow_us {
+	text-align: right;
+	margin: 0 2rem;
+	padding-bottom: 1rem;
+	float: right;
+}
+#footer_follow_us h3 {
+	margin: 20px 0;
+}	
+#footer_follow_us p {
+	font-size: 1.5em;
+}
+#footer_follow_us a {
+	color: #F6F7F8;
+	border: 0;
+}
+#footer_follow_us a:hover {
+	color: yellow;
+}
+#footer_container_copyright {
+	clear: both;
+	padding-top: 2rem;
+}
+#progress {
+	/* make the page progress indicator at bottom center */
+	height: 8px;
+	position: fixed;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 1px solid #011627;
+	/* initially black and short at the begin of page */
+	background-color: #011627;
+	width: 5%;
+	/* apply animation 'stepper' with linear effect */
+	animation: stepper linear;
+	animation-timeline: scroll();
+}
+@keyframes stepper {
+	/* change to Water Blue and full width when scroll to the end of page */
+	to {
+		background-color: #74CCF4;
+		width: 100%;
+	}
+}
+
+
+/************************************************************************** 
+ * responsive settings for smaller screen 
+ **************************************************************************/
+@media screen and (max-width: 1000px) {
+	main section {
+		margin: 10px 0;
+	}
+	.featured {
+		flex-direction: column;
+		text-align: center;
+	}
+	.featured_desc {
+		padding-left: 0;
+	}
+	.featured_desc ul {
+		display: inline-block;
+		margin: 15px auto;
+	}
+	figure.featured_image img {
+		width: 400px;
+	}
+	/* adjust slideshow */
+	.caption_container {
+		top: 60%;
+		left: 50%;
+		transform: translate(-50%,-60%);
+	}
+	#slideshow_dots {
+		top: 20%;
+	}
+	/* make map 80% width of viewport */
+	iframe {
+		margin-top: 40px;
+		width: calc(100vw*0.8);
+	}
+	#rooms_container {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	/* adjust contact us form */
+	#contact_form {
+		text-align: left;
+	}
+	#contact_form input, 
+	#contact_form textarea {
+		width: 100%;
+	}
+	#form_thumb {
+		display: inline;
+	}
+	#contact_banner {
+		display: none;
+	
+}
+
+@media screen and (max-width: 820px) {
+	/* make the modal 100% wide and stick to the bottom of navbar */
+	.modal_content {
+		margin-top: 4.5rem;
+		border-radius: 0 0 10px 10px;
+	}
+	#modal1, #modal2 {
+		width: 100%;
+	}
+	/* hide the right monthly calendar */
+	#month_right {
+		display: none;
+	}
+	/* adjust slideshow */
+	.caption_container {
+		top: 65%;
+		left: 50%;
+		transform: translate(-50%,-65%);
+	}
+	#slideshow_dots {
+		top: 17%;
+	}
+	/* wrap follow up section in footer */
+	#footer_follow_us {
+		text-align: left;
+		margin: 0 2rem;
+		float: left;
+	}
+	#back {
+		left: calc(90% - 130px);
+	}
+}
+
+@media screen and (max-width: 640px) {
+	/* make the resort logo and title font smaller */
+	#hero {
+		height: calc(100vh - 20rem);
+	}
+	#hero_logo {
+		width: 100px;
+		left: 45%;
+		transform: translate(-25%, -45%);
+	}
+	.hero_title1 h1 {
+		font-size: 2rem;
+	}
+	.hero_title2 h1 {
+		font-size: 1.5rem;
+	}
+	.hero_title2 {
+		width: 70%;
+	}
+	/* move the CTA/BOOK NOW button to center */
+	a#CTA {
+		position: absolute;
+		top: 0;
+		left: 40%;
+		transform: translateX(-40%);
+	}
+	/* show hamburger menu, hide horizontal navbar */
+	a#hamlogo {
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+	#topNav a:not(:nth-last-child(-n+2)), #topNav span {
+		display: none;
+	}
+	#topNav.mobile {
+		height: auto;
+	}
+	#topNav.mobile a:not(:last-child) {
+		float: none;
+		display: table;
+		text-align: left;
+		padding: 0.3rem 0.2rem;
+		margin: 0.8rem 0.5rem;
+	}
+	#topNav.mobile img {
+		display: none;
+	}
+	/* make components in room reservation section stacked */
+	#book {
+		flex-direction: column;
+		height: auto;
+	}
+	#rooms_container {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}

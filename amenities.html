@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!--
+	ITC2400 Signature Assignment
+	Hao-Peng Wang, NUID: 002653367
+-->
+
+<html lang="en">
+	<head>
+		<title>Amenities</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Hao-Peng Wang">
+		<meta name="description" content="Explore the luxurious amenities at Ocean Breeze Resort. From spa services to fitness facilities, our resort offers everything you need for a relaxing and rejuvenating stay.">
+		<meta name="keywords" content="Ocean Breeze Resort, amenities, spa, fitness center, pool, beach access, dining, activities">
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="styles/styles.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Titan+One&display=swap" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/17168e035e.js" crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+		<!-- navbar, will collapse to hamburger on smaller screens -->
+		<header>
+			<nav id="topNav">
+				<img src="images/logo.png" alt="Ocean Breeze Resort logo" onclick="window.location.href='index.html'">
+				<a href="index.html">Home</a>
+				<a href="rooms.html">Rooms</a>
+				<a href="dining.html">Dining</a>
+				<span>Amenities</span>
+				<a href="offers.html">Offers</a>
+				<a href="contact.html">Contact Us</a>
+				<a href="javascript:void(0);" id="CTA" onclick="scrollToBook()">BOOK NOW</a>
+				<a href="javascript:void(0);" id="hamlogo" onclick="hamburger()"><i class="fa-solid fa-bars fa-2xl"></i></a>
+			</nav>
+		</header>
+
+		<!-- put a gap between navbar and hero image, 
+		     will have a fictitious TripAdvisor rating on home page -->
+		<div id="placeholder"></div>
+
+		<!-- hero image section -->
+		<section id="hero">
+			<div class="hero_title2">
+				<h1>Unwind, Refresh, and Enjoy<br>Our Premier Amenities!</h1>
+				<p>Discover paradise at Ocean Breeze Resort, where luxury amenities await your every desire. Indulge, unwind, and create unforgettable memories.</p>
+			</div>
+			<!-- contain the citing info with figure/figcaption tag -->
+			<figure class="banner_image">
+				<figcaption>Photo credit: Pexels, Colon Freld</figcaption>
+				<img src="images/banner_amenities.jpg" alt="Beachside lounge chairs">
+				<!-- Photo credit: Pexels, Colon Freld 
+				https://www.pexels.com/photo/white-outdoor-lounge-chairs-2373201/ -->
+			</figure>
+		</section>
+
+		<!-- room reservation section, 
+		     will show a "BOOK NOW" button if this section is out of viewport, 
+			 and clicking on the button will scroll this section back -->
+		<section>
+			<div id="book">
+				<div id="date_picker" onclick="showModalDatePicker(0)">
+					<div id="from_date_picker">
+						<div>
+							<span id="from_date"></span>
+						</div>
+						<div>
+							<span id="from_month"></span><br>
+							<span id="from_weekday"></span>
+						</div>
+					</div>
+					<div id="to_date_picker">
+						<div>
+							<span id="to_date"></span>
+						</div>
+						<div>
+							<span id="to_month"></span><br>
+							<span id="to_weekday"></span>
+						</div>
+					</div>
+				</div>
+				<div id="guests">
+					<button id="button_guests" onclick="showModalGuests()"><span id="num_adults" class="num"></span> Adult<span id="plural_adults"></span>, &nbsp;&nbsp;<span id="num_kids" class="num"></span> Kid<span id="plural_kids"></span></button>
+				</div>
+				<div id="check">
+					<button id="button_check" onclick="checkRoom()">Check Rooms & Rates</button>
+				</div>
+			</div>
+
+			<!-- modal for date picker, 
+			     will show calendars of two months and allows users 
+				 to select the start and end dates of reservation -->
+			<div id="modal_date_picker" class="modal">
+				<div id="modal1" class="modal_content">
+					<div class="modal_title_container">
+						<i class="fa-regular fa-circle-xmark fa-2xl modal_close" id="btn_date_picker_close"></i>
+						<h3 class="modal_title">Select Dates</h3>
+					</div>
+					<div id="calendar_arrow_list">
+						<i class="fa-regular fa-circle-left fa-2xl disabledBtn" id="calendar_arrow_left"></i>
+						<i class="fa-regular fa-circle-right fa-2xl" id="calendar_arrow_right"></i>
+					</div>
+					<div class="modal_date_container">
+						<div id="month_left" class="month_container"></div>
+						<div id="month_right" class="month_container"></div>
+					</div>
+					<div class="modal_button_container">
+						<button id="modal_date_picker_cancel" class="modal_button">Cancel</button>
+						<button id="modal_date_picker_done" class="modal_button">Done</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- modal for guests number selection, 
+			     allows users to enter the number of adults and kids -->
+			<div id="modal_guests" class="modal">
+				<div id="modal2" class="modal_content">
+					<div class="modal_title_container">
+						<i class="fa-regular fa-circle-xmark fa-2xl modal_close" id="btn_guests_close"></i>
+						<h3 class="modal_title">Guests Number</h3>
+						<p>At least one adult, total guests does not exceed 4.</p>
+					</div>
+					<div class="modal_guests_container">
+						<div>
+							<span class="guests_label">Adults</span>
+							<i class="fa-regular fa-square-minus fa-2xl" id="adults_minus"></i>
+							<span class="guests_num" id="guests_adults_num"></span>
+							<i class="fa-regular fa-square-plus fa-2xl" id="adults_plus"></i>
+						</div>
+						<div>
+							<span class="guests_label">Kids</span>
+							<i class="fa-regular fa-square-minus fa-2xl" id="kids_minus"></i>
+							<span class="guests_num" id="guests_kids_num"></span>
+							<i class="fa-regular fa-square-plus fa-2xl" id="kids_plus"></i>
+						</div>
+					</div>
+					<div class="modal_button_container">
+						<button id="modal_guests_cancel" class="modal_button">Cancel</button>
+						<button id="modal_guests_done" class="modal_button">Done</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ########## main information section ########## -->
+		<main>
+
+			<!-- Fitness Center section -->
+			<section class="bg_gray">
+				<div class="featured">
+					<figure class="cited_image featured_image">
+						<figcaption>Photo credit: Pexels, Max Vakhtbovycn</figcaption>
+						<!-- Photo credit: Pexels, Max Vakhtbovycn 
+						https://www.pexels.com/photo/various-fitness-machines-in-modern-spacious-gym-7031706/ -->
+						<img src="images/amenities_fitness.jpg" alt="Fitness Center" class="fadein">
+					</figure>
+					<div class="featured_desc">
+						<h2>Fitness Center</h2>
+						<p>Unleash your inner athlete at our state-of-the-art Fitness Center. Equipped with the latest cardio and strength training equipment, it's your haven for invigorating workouts. Elevate your fitness journey with our professional trainers, who offer personalized sessions tailored to your goals. Whether you prefer an intense cardio session or a calming yoga class, our Fitness Center has something for everyone.</p>
+						<ul>
+							<li>Hours: Open daily, 6:00 AM - 10:00 PM</li>
+							<li>Location: Ground Floor, Main Building</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- Business Center section -->
+			<section>
+				<div class="featured reverse">
+					<figure class="cited_image featured_image">
+						<figcaption>Photo credit: Pexels, Alex Qian</figcaption>
+						<!-- Photo credit: Pexels, Alex Qian 
+						https://www.pexels.com/photo/flat-screen-monitor-turned-on-in-office-2343474/ -->
+						<img src="images/amenities_business.jpg" alt="Business Center" class="fadein">
+					</figure>
+					<div class="featured_desc">
+						<h2>Business Center</h2>
+						<p>Maximize productivity in our sophisticated Business Center, designed to meet all your professional needs. Enjoy access to high-speed internet, printing facilities, and private workstations in a quiet and conducive environment. Need to host a virtual meeting or make last-minute edits to your presentation? Our dedicated staff is always on hand to assist you. Elevate your work experience and stay connected seamlessly at Ocean Breeze Resort.</p>
+						<ul>
+							<li>Monday to Friday, 8:00 AM - 6:00 PM</li>
+							<li>Location: Lobby Area, Main Building</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- Meeting Rooms section -->
+			<section class="bg_gray">
+				<div class="featured">
+					<figure class="cited_image featured_image">
+						<figcaption>Photo credit: Pexels, Christina Morillo 
+						</figcaption>
+						<!-- Photo credit: Pexels, Christina Morillo 
+						https://www.pexels.com/photo/people-having-meeting-inside-conference-room-1181395/ -->
+						<img src="images/amenities_meeting.jpg" alt="Meeting Rooms" class="fadein">
+					</figure>
+					<div class="featured_desc">
+						<h2>Meeting Rooms</h2>
+						<p>Step into a world of endless possibilities in our versatile Meeting Rooms. Perfect for corporate events, conferences, or intimate gatherings, our flexible spaces are equipped with cutting-edge technology and customizable setups to suit your needs. From audiovisual equipment to catering services, we take care of every detail to ensure your event is a resounding success.</p>
+						<ul>
+							<li>Hours: By Reservation</li>
+							<li>Location: Various Locations, Main Building</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- Beach Access section -->
+			<section>
+				<div class="featured reverse">
+					<figure class="cited_image featured_image">
+						<figcaption>Photo credit: Pexels, Shae Devereaux</figcaption>
+						<!-- Photo credit: Pexels, Shae Devereaux 
+						https://www.pexels.com/photo/entrance-on-the-beach-13867887/ -->
+						<img src="images/amenities_beach.jpg" alt="Beach Access" class="fadein">
+					</figure>
+					<div class="featured_desc">
+						<h2>Beach Access</h2>
+						<p>Experience the epitome of relaxation with direct access to pristine sandy beaches. Whether you're craving a leisurely stroll along the shore or seeking thrilling water activities, our beachfront location offers it all. Bask in the warm sun, take a refreshing dip in the azure waters, or simply unwind with breathtaking ocean views.</p>
+						<ul>
+							<li>Hours: 24/7</li>
+							<li>Location: Oceanfront</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- Swimming Pool section -->
+			<section class="bg_gray">
+				<div class="featured">
+					<figure class="cited_image featured_image">
+						<figcaption>Photo credit: Unsplash, Christian Lambert </figcaption>
+						<!-- Photo credit: Unsplash, Christian Lambert 
+						https://unsplash.com/photos/brown-wooden-lounge-chairs-near-pool-surrounded-by-palm-trees-vmIWr0NnpCQ -->
+						<img src="images/amenities_pool.jpg" alt="Swimming Pool" class="fadein">
+					</figure>
+					<div class="featured_desc">
+						<h2>Swimming Pool</h2>
+						<p>Dive into luxury at our sparkling Swimming Pool, where refreshing aquatic adventures await. Surrounded by lush tropical landscapes, our pool provides the perfect oasis for relaxation and fun. Lounge on comfortable sunbeds, sip tropical cocktails from the poolside bar, or take a refreshing dip to escape the heat.</p>
+						<ul>
+							<li>Hours: Open daily, 8:00 AM - 8:00 PM</li>
+							<li>Location: Poolside Area</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+		</main>
+
+		<!-- footer section, 
+		     clicking on the address will scroll to maps/location section, 
+             clicking on the phone and email will link to corresponding actions, 
+             clicking on the social media icons will link to corresponding sites -->
+		<footer>
+			<div id="footer_container">
+				<div id="footer_contact_us">
+					<h3>CONTACT US</h3>
+					<div id="footer_contact_us_content">
+						<h2>Ocean Breeze Resort</h2>
+						<p><i class="fa-solid fa-house"></i><a href="javascript:void(0);" onclick="scrollToMap()">The Address of Ocean Breeze Resort</a></p>
+						<p><i class="fa-solid fa-phone"></i><a href="tel:+11234567890">+1-123-456-7890</a></p>
+						<p><i class="fa-solid fa-envelope"></i><a href="mailto:reservation@oceanbreezeresort.com">reservation@oceanbreezeresort.com</a></p>
+					</div>
+				</div>
+				<div id="footer_follow_us">
+					<h3>FOLLOW US</h3>
+					<p><a href="https://www.facebook.com"><i class="fa-brands fa-square-facebook fa-2xl"></i></a>
+					<a href="https://www.twitter.com"><i class="fa-brands fa-square-x-twitter fa-2xl"></i></a>
+					<a href="https://www.instagram.com"><i class="fa-brands fa-square-instagram fa-2xl"></i></a>
+					<a href="https://www.linkedin.com"><i class="fa-brands fa-linkedin fa-2xl"></i></a></p>
+				</div>
+				<div id="footer_container_copyright">
+					<p>&copy; 2024 Ocean Breeze Resort. All Rights Reserved.</p>
+				</div>
+			</div>
+		</footer>
+
+		<div id="progress"></div>
+
+		<!-- include JavaScript here -->
+		<script src="scripts/common.js"></script>
+	</body>
+</html>

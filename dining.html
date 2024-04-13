@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!--
+	ITC2400 Signature Assignment
+	Hao-Peng Wang, NUID: 002653367
+-->
+
+<html lang="en">
+	<head>
+		<title>Dining and Drinks</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Hao-Peng Wang">
+		<meta name="description" content="Discover the culinary delights and refreshing beverages at Ocean Breeze Resort. Enjoy a diverse menu of exquisite dishes and signature cocktails with stunning ocean views.">
+		<meta name="keywords" content="Ocean Breeze Resort, dining, drinks, restaurant, bar, cuisine, cocktails, ocean views">
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="styles/styles.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Titan+One&display=swap" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/17168e035e.js" crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+		<!-- navbar, will collapse to hamburger on smaller screens -->
+		<header>
+			<nav id="topNav">
+				<img src="images/logo.png" alt="Ocean Breeze Resort logo" onclick="window.location.href='index.html'">
+				<a href="index.html">Home</a>
+				<a href="rooms.html">Rooms</a>
+				<span>Dining</span>
+				<a href="amenities.html">Amenities</a>
+				<a href="offers.html">Offers</a>
+				<a href="contact.html">Contact Us</a>
+				<a href="javascript:void(0);" id="CTA" onclick="scrollToBook()">BOOK NOW</a>
+				<a href="javascript:void(0);" id="hamlogo" onclick="hamburger()"><i class="fa-solid fa-bars fa-2xl"></i></a>
+			</nav>
+		</header>
+
+		<!-- put a gap between navbar and hero image, 
+		     will have a fictitious TripAdvisor rating on home page -->
+		<div id="placeholder"></div>
+
+		<!-- hero image section -->
+		<section id="hero">
+			<div class="hero_title2">
+				<h1>Enjoy Dining and Drinks<br>Right On Site!</h1>
+				<p>Indulge in coastal flavors and refreshing libations at Ocean Breeze Resort. Savor every bite and sip with breathtaking ocean views.</p>
+			</div>
+			<!-- contain the citing info with figure/figcaption tag -->
+			<figure class="banner_image">
+				<figcaption>Photo credit: Pexels, Matheus Bertelli</figcaption>
+				<img src="images/banner_dining.jpg" alt="Set table in restaurant">
+				<!-- Photo credit: Pexels, Matheus Bertelli 
+				https://www.pexels.com/photo/set-table-in-restaurant-17057025/ -->
+			</figure>
+		</section>
+
+		<!-- room reservation section, 
+		     will show a "BOOK NOW" button if this section is out of viewport, 
+			 and clicking on the button will scroll this section back -->
+		<section>
+			<div id="book">
+				<div id="date_picker" onclick="showModalDatePicker(0)">
+					<div id="from_date_picker">
+						<div>
+							<span id="from_date"></span>
+						</div>
+						<div>
+							<span id="from_month"></span><br>
+							<span id="from_weekday"></span>
+						</div>
+					</div>
+					<div id="to_date_picker">
+						<div>
+							<span id="to_date"></span>
+						</div>
+						<div>
+							<span id="to_month"></span><br>
+							<span id="to_weekday"></span>
+						</div>
+					</div>
+				</div>
+				<div id="guests">
+					<button id="button_guests" onclick="showModalGuests()"><span id="num_adults" class="num"></span> Adult<span id="plural_adults"></span>, &nbsp;&nbsp;<span id="num_kids" class="num"></span> Kid<span id="plural_kids"></span></button>
+				</div>
+				<div id="check">
+					<button id="button_check" onclick="checkRoom()">Check Rooms & Rates</button>
+				</div>
+			</div>
+
+			<!-- modal for date picker, 
+			     will show calendars of two months and allows users 
+				 to select the start and end dates of reservation -->
+			<div id="modal_date_picker" class="modal">
+				<div id="modal1" class="modal_content">
+					<div class="modal_title_container">
+						<i class="fa-regular fa-circle-xmark fa-2xl modal_close" id="btn_date_picker_close"></i>
+						<h3 class="modal_title">Select Dates</h3>
+					</div>
+					<div id="calendar_arrow_list">
+						<i class="fa-regular fa-circle-left fa-2xl disabledBtn" id="calendar_arrow_left"></i>
+						<i class="fa-regular fa-circle-right fa-2xl" id="calendar_arrow_right"></i>
+					</div>
+					<div class="modal_date_container">
+						<div id="month_left" class="month_container"></div>
+						<div id="month_right" class="month_container"></div>
+					</div>
+					<div class="modal_button_container">
+						<button id="modal_date_picker_cancel" class="modal_button">Cancel</button>
+						<button id="modal_date_picker_done" class="modal_button">Done</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- modal for guests number selection, 
+			     allows users to enter the number of adults and kids -->
+			<div id="modal_guests" class="modal">
+				<div id="modal2" class="modal_content">
+					<div class="modal_title_container">
+						<i class="fa-regular fa-circle-xmark fa-2xl modal_close" id="btn_guests_close"></i>
+						<h3 class="modal_title">Guests Number</h3>
+						<p>At least one adult, total guests does not exceed 4.</p>
+					</div>
+					<div class="modal_guests_container">
+						<div>
+							<span class="guests_label">Adults</span>
+							<i class="fa-regular fa-square-minus fa-2xl" id="adults_minus"></i>
+							<span class="guests_num" id="guests_adults_num"></span>
+							<i class="fa-regular fa-square-plus fa-2xl" id="adults_plus"></i>
+						</div>
+						<div>
+							<span class="guests_label">Kids</span>
+							<i class="fa-regular fa-square-minus fa-2xl" id="kids_minus"></i>
+							<span class="guests_num" id="guests_kids_num"></span>
+							<i class="fa-regular fa-square-plus fa-2xl" id="kids_plus"></i>
+						</div>
+					</div>
+					<div class="modal_button_container">
+						<button id="modal_guests_cancel" class="modal_button">Cancel</button>
+						<button id="modal_guests_done" class="modal_button">Done</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ########## main information section ########## -->
+		<main>
+
+			<!-- Bayview Bistro section -->
+			<section class="bg_gray">
+				<div class="featured">
+					<figure class="cited_image featured_image">
+						<figcaption>Photo credit: Pexels, Prateek Jaiswal</figcaption>
+						<!-- Photo credit: Pexels, Prateek Jaiswal 
+						https://www.pexels.com/photo/plates-and-cutlery-on-tablet-in-restaurant-13537756/ -->
+						<img src="images/dining_bistro.jpg" alt="Bayview Bistro" class="fadein">
+					</figure>
+					<div class="featured_desc">
+						<h2>Bayview Bistro</h2>
+						<p>Immerse yourself in a culinary journey at Bayview Bistro, where panoramic ocean vistas meet tantalizing flavors. Indulge in fresh seafood delicacies and locally sourced ingredients expertly crafted into gourmet dishes. Whether it's a romantic dinner or a casual brunch, our waterfront dining experience promises unforgettable moments.</p>
+						<ul>
+							<li>Hours: Open daily, 7:00 AM - 10:00 PM</li>
+							<li>Location: Beachfront</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- Sunset Grill section -->
+			<section>
+				<div class="featured reverse">
+					<figure class="cited_image featured_image">
+						<figcaption>Photo credit: Unsplash, Valiant Made</figcaption>
+						<!-- Photo credit: Unsplash, Valiant Made 
+						https://unsplash.com/photos/person-holding-black-frying-pan-with-cooked-food-WVEBCZ2agBg -->
+						<img src="images/dining_grill.jpg" alt="Sunset Grill" class="fadein">
+					</figure>
+					<div class="featured_desc">
+						<h2>Sunset Grill</h2>
+						<p>Experience the epitome of seaside dining at Sunset Grill, where every meal is a celebration of flavors and breathtaking sunsets. Savor delectable grilled specialties and signature cocktails while soaking in the stunning coastal views. With an inviting ambiance and attentive service, Sunset Grill is the perfect spot to unwind and create lasting memories.</p>
+						<ul>
+							<li>Hours: Evening hours, 6:00 PM - 11:00 PM</li>
+							<li>Location: Rooftop Level</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- Beachside Barbecue section -->
+			<section class="bg_gray">
+				<div class="featured">
+					<figure class="cited_image featured_image">
+						<figcaption>Photo credit: Pexels, Pixabay</figcaption>
+						<!-- Photo credit: Pexels, Pixabay 
+						https://www.pexels.com/photo/barbecues-in-charcoal-grill-533325/ -->
+						<img src="images/dining_barbecue.jpg" alt="Beachside Barbecue" class="fadein">
+					</figure>
+					<div class="featured_desc">
+						<h2>Beachside Barbecue</h2>
+						<p>Delight your senses with the smoky aromas and mouthwatering flavors of our Beachside Barbecue. From savory grilled meats to flavorful vegetarian options, our menu offers something for everyone. Enjoy al fresco dining on the beachfront terrace, complemented by live music and a laid-back atmosphere. Experience the ultimate barbecue feast with family and friends, accompanied by refreshing drinks and ocean breezes.</p>
+						<ul>
+							<li>Hours: Seasonal, weekends, 12:00 PM - 10:00 PM</li>
+							<li>Location: Private Beach</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+		</main>
+
+		<!-- footer section, 
+		     clicking on the address will scroll to maps/location section, 
+             clicking on the phone and email will link to corresponding actions, 
+             clicking on the social media icons will link to corresponding sites -->
+		<footer>
+			<div id="footer_container">
+				<div id="footer_contact_us">
+					<h3>CONTACT US</h3>
+					<div id="footer_contact_us_content">
+						<h2>Ocean Breeze Resort</h2>
+						<p><i class="fa-solid fa-house"></i><a href="javascript:void(0);" onclick="scrollToMap()">The Address of Ocean Breeze Resort</a></p>
+						<p><i class="fa-solid fa-phone"></i><a href="tel:+11234567890">+1-123-456-7890</a></p>
+						<p><i class="fa-solid fa-envelope"></i><a href="mailto:reservation@oceanbreezeresort.com">reservation@oceanbreezeresort.com</a></p>
+					</div>
+				</div>
+				<div id="footer_follow_us">
+					<h3>FOLLOW US</h3>
+					<p><a href="https://www.facebook.com"><i class="fa-brands fa-square-facebook fa-2xl"></i></a>
+					<a href="https://www.twitter.com"><i class="fa-brands fa-square-x-twitter fa-2xl"></i></a>
+					<a href="https://www.instagram.com"><i class="fa-brands fa-square-instagram fa-2xl"></i></a>
+					<a href="https://www.linkedin.com"><i class="fa-brands fa-linkedin fa-2xl"></i></a></p>
+				</div>
+				<div id="footer_container_copyright">
+					<p>&copy; 2024 Ocean Breeze Resort. All Rights Reserved.</p>
+				</div>
+			</div>
+		</footer>
+
+		<div id="progress"></div>
+
+		<!-- include JavaScript here -->
+		<script src="scripts/common.js"></script>
+	</body>
+</html>

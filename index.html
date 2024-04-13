@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!--
+	ITC2400 Signature Assignment
+	Hao-Peng Wang, NUID: 002653367
+-->
+
+<html lang="en">
+	<head>
+		<title>Ocean Breeze Resort</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Hao-Peng Wang">
+		<meta name="description" content="Welcome to Ocean Breeze Resort, your perfect summer getaway destination. Explore our luxurious accommodations, top-notch amenities, breathtaking views, and exquisite dining options. Book your dream vacation today!">
+		<meta name="keywords" content="Ocean Breeze Resort, summer vacation, beach resort, luxury accommodations, amenities, dining, booking, seaside getaway, relaxation, family vacation">
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="styles/styles.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Titan+One&display=swap" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/17168e035e.js" crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+		<!-- navbar, will collapse to hamburger on smaller screens -->
+		<header>
+			<nav id="topNav">
+				<img src="images/logo.png" alt="Ocean Breeze Resort logo" onclick="window.location.href='index.html'">
+				<span>Home</span>
+				<a href="rooms.html">Rooms</a>
+				<a href="dining.html">Dining</a>
+				<a href="amenities.html">Amenities</a>
+				<a href="offers.html">Offers</a>
+				<a href="contact.html">Contact Us</a>
+				<a href="javascript:void(0);" id="CTA" onclick="scrollToBook()">BOOK NOW</a>
+				<a href="javascript:void(0);" id="hamlogo" onclick="hamburger()"><i class="fa-solid fa-bars fa-2xl"></i></a>
+			</nav>
+		</header>
+
+		<!-- put a gap between navbar and hero image, 
+		     will have a fictitious TripAdvisor rating on home page -->
+		<div id="placeholder">
+			<section id="section_tripadvisor">
+				<div id="tripadvisor_left">
+					<div id="tripadvisor_rating">
+						<img src="images/tripadvisor.png" alt="TripAdvisor icon" id="tripadvisor_logo">
+						<i class="fa-solid fa-circle fa-sm"></i>
+						<i class="fa-solid fa-circle fa-sm"></i>
+						<i class="fa-solid fa-circle fa-sm"></i>
+						<i class="fa-solid fa-circle fa-sm"></i>
+						<i class="fa-solid fa-circle fa-sm"></i>
+					</div>
+					<p>Rating 5.0 out of 5.0</p>
+				</div>
+				<div id="tripadvisor_right">
+					<p>Based on 3,000 guest reviews</p>
+					<p><a href="https://www.tripadvisor.com">Read reviews</a></p>
+				</div>
+			</section>
+		</div>
+
+		<!-- hero image section -->
+		<section id="hero">
+			<div id="hero_logo">
+				<img src="images/logo.png">
+			</div>
+			<div class="hero_title1">
+				<h1>Ocean Breeze Resort</h1>
+				<p>Welcome to Paradise: <br>Where Every Wave Brings Serenity!</p>
+			</div>
+			<!-- contain the citing info with figure/figcaption tag -->
+			<figure class="banner_image">
+				<figcaption>Photo credit: Pexels, Asad Photo Maldives</figcaption>
+				<img src="images/banner_index.jpg" alt="Beautiful beach at Ocean Breeze Resort">
+				<!-- Photo credit: Pexels, Asad Photo Maldives 
+				https://www.pexels.com/photo/photo-of-seashore-during-daytime-1450360/ -->
+			</figure>
+		</section>
+
+		<!-- room reservation section, 
+		     will show a "BOOK NOW" button if this section is out of viewport, 
+			 and clicking on the button will scroll this section back -->
+		<section>
+			<div id="book">
+				<div id="date_picker" onclick="showModalDatePicker(0)">
+					<div id="from_date_picker">
+						<div>
+							<span id="from_date"></span>
+						</div>
+						<div>
+							<span id="from_month"></span><br>
+							<span id="from_weekday"></span>
+						</div>
+					</div>
+					<div id="to_date_picker">
+						<div>
+							<span id="to_date"></span>
+						</div>
+						<div>
+							<span id="to_month"></span><br>
+							<span id="to_weekday"></span>
+						</div>
+					</div>
+				</div>
+				<div id="guests">
+					<button id="button_guests" onclick="showModalGuests()"><span id="num_adults" class="num"></span> Adult<span id="plural_adults"></span>, &nbsp;&nbsp;<span id="num_kids" class="num"></span> Kid<span id="plural_kids"></span></button>
+				</div>
+				<div id="check">
+					<button id="button_check" onclick="checkRoom()">Check Rooms & Rates</button>
+				</div>
+			</div>
+
+			<!-- modal for date picker, 
+			     will show calendars of two months and allows users 
+				 to select the start and end dates of reservation -->
+			<div id="modal_date_picker" class="modal">
+				<div id="modal1" class="modal_content">
+					<div class="modal_title_container">
+						<i class="fa-regular fa-circle-xmark fa-2xl modal_close" id="btn_date_picker_close"></i>
+						<h3 class="modal_title">Select Dates</h3>
+					</div>
+					<div id="calendar_arrow_list">
+						<i class="fa-regular fa-circle-left fa-2xl disabledBtn" id="calendar_arrow_left"></i>
+						<i class="fa-regular fa-circle-right fa-2xl" id="calendar_arrow_right"></i>
+					</div>
+					<div class="modal_date_container">
+						<div id="month_left" class="month_container"></div>
+						<div id="month_right" class="month_container"></div>
+					</div>
+					<div class="modal_button_container">
+						<button id="modal_date_picker_cancel" class="modal_button">Cancel</button>
+						<button id="modal_date_picker_done" class="modal_button">Done</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- modal for guests number selection, 
+			     allows users to enter the number of adults and kids -->
+			<div id="modal_guests" class="modal">
+				<div id="modal2" class="modal_content">
+					<div class="modal_title_container">
+						<i class="fa-regular fa-circle-xmark fa-2xl modal_close" id="btn_guests_close"></i>
+						<h3 class="modal_title">Guests Number</h3>
+						<p>At least one adult, total guests does not exceed 4.</p>
+					</div>
+					<div class="modal_guests_container">
+						<div>
+							<span class="guests_label">Adults</span>
+							<i class="fa-regular fa-square-minus fa-2xl" id="adults_minus"></i>
+							<span class="guests_num" id="guests_adults_num"></span>
+							<i class="fa-regular fa-square-plus fa-2xl" id="adults_plus"></i>
+						</div>
+						<div>
+							<span class="guests_label">Kids</span>
+							<i class="fa-regular fa-square-minus fa-2xl" id="kids_minus"></i>
+							<span class="guests_num" id="guests_kids_num"></span>
+							<i class="fa-regular fa-square-plus fa-2xl" id="kids_plus"></i>
+						</div>
+					</div>
+					<div class="modal_button_container">
+						<button id="modal_guests_cancel" class="modal_button">Cancel</button>
+						<button id="modal_guests_done" class="modal_button">Done</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ########## main information section ########## -->
+		<main>
+
+			<!-- About Us section, 
+				 a brief introduction to the Ocean Breeze Resort, shaping the brand identity 
+				 and building credibility and trust with the audience -->
+			<section class="bg_gray">
+				<div class="featured">
+					<figure class="cited_image featured_image">
+						<figcaption>Photo credit: Pexels, Michael Block</figcaption>
+						<!-- Photo credit: Pexels, Michael Block 
+						https://www.pexels.com/photo/woman-soaking-on-the-swimming-pool-3225531/ -->
+						<img src="images/about.jpg" alt="A woman soaking on the swimming pool" class="fadein">
+					</figure>
+					<div class="featured_desc">
+						<h2>About Us</h2>
+						<p>Looking for a fantastic summer vacation escape to unwind and reconnect with nature? Welcome to <b>Ocean Breeze Resort</b>, where the sun-kissed beaches and tranquil ambiance await you. Nestled amidst breathtaking coastal vistas and lush tropical landscapes, our resort offers a serene retreat for discerning travelers seeking relaxation and rejuvenation.</p>
+						<p>Indulge in the ultimate beachfront experience as you lounge on pristine shores, savor delectable cuisine crafted from the freshest local ingredients, and embark on exciting adventures exploring the wonders of the surrounding area. With our unwavering commitment to exceptional hospitality and personalized service, <b>Ocean Breeze Resort</b> promises to exceed your expectations and create unforgettable memories that will last a lifetime.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Slideshow section, photo gallery of the Ocean Breeze Resort, 
+			     modified from the example of W3Schools, added controls for the 
+				 dots and thumbs, and JavaScript for auto-switching to the next 
+				 slide every 5 seconds -->
+			<section id="slideshow_container">
+				<div class="ftslides fade">
+					<div class="slider_number">1 / 6</div>
+					<img src="images/slider1.jpg" alt="Island reef of a surrounding lagoon">
+					<!-- Photo credit: Pexels, Asad Photo Maldives 
+					https://www.pexels.com/photo/a-photo-of-island-reef-of-a-surrounding-lagoon-3601450/ -->
+				</div>
+				<div class="ftslides fade">
+					<div class="slider_number">2 / 6</div>
+					<img src="images/slider2.jpg" alt="Beautiful beach scene">
+					<!-- Photo credit: Pexels, Pixabay 
+					https://www.pexels.com/photo/person-showing-island-221471/ -->
+				</div>
+				<div class="ftslides fade">
+					<div class="slider_number">3 / 6</div>
+					<img src="images/slider3.jpg" alt="Terrace of villa overlooking the ocean">
+					<!-- Photo credit: Pexels, Ben Mack 
+					https://www.pexels.com/photo/terrace-of-modern-villa-overlooking-ocean-6775268/ -->
+				</div>
+				<div class="ftslides fade">
+					<div class="slider_number">4 / 6</div>
+					<img src="images/slider4.jpg" alt="People having fun at the beach">
+					<!-- Photo credit: Pexels, RDNE Stock project 
+					https://www.pexels.com/photo/people-having-fun-at-the-beach-8455904/ -->
+				</div>
+				<div class="ftslides fade">
+					<div class="slider_number">5 / 6</div>
+					<img src="images/slider5.jpg" alt="Yacht docked at pier">
+					<!-- Photo credit: Pexels, Quang Nguyen Vinh 
+					https://www.pexels.com/photo/tropical-beach-resort-island-14013215/ -->
+				</div>
+				<div class="ftslides fade">
+					<div class="slider_number">6 / 6</div>
+					<img src="images/slider6.jpg" alt="Bench surrounded by palm trees">
+					<!-- Photo credit: Pexels, Asad Photo Maldives 
+					https://www.pexels.com/photo/brown-wooden-bench-surrounded-by-palm-trees-1591362/ -->
+				</div>
+
+				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+				<a class="next" onclick="plusSlides(1)">&#10095;</a>
+				<div id="slideshow_dots">
+					<span class="dot" onclick="currentSlide(1)"></span>
+					<span class="dot" onclick="currentSlide(2)"></span>
+					<span class="dot" onclick="currentSlide(3)"></span>
+					<span class="dot" onclick="currentSlide(4)"></span>
+					<span class="dot" onclick="currentSlide(5)"></span>
+					<span class="dot" onclick="currentSlide(6)"></span>
+				</div>
+				<!-- description and photo credit info of each image -->
+				<div class="caption_container">
+					<p id="caption"></p>
+				</div>
+				<!-- the row of thumb images -->
+				<div class="slideshow_thumb">
+					<div class="thumb_row">
+						<div class="thumb_item">
+							<img class="thumb" src="images/slider1_thumb.jpg" style="width:100%" onclick="currentSlide(1)" alt="Island reef of a surrounding lagoon;Photo credit: Pexels, Asad Photo Maldives">
+						</div>
+						<div class="thumb_item">
+							<img class="thumb" src="images/slider2_thumb.jpg" style="width:100%" onclick="currentSlide(2)" alt="Beautiful beach scene;Photo credit: Pexels, Pixabay">
+						</div>
+						<div class="thumb_item">
+							<img class="thumb" src="images/slider3_thumb.jpg" style="width:100%" onclick="currentSlide(3)" alt="Terrace of villa overlooking the ocean; Photo credit: Pexels, Ben Mack">
+						</div>
+						<div class="thumb_item">
+							<img class="thumb" src="images/slider4_thumb.jpg" style="width:100%" onclick="currentSlide(4)" alt="People having fun at the beach;Photo credit: Pexels, RDNE Stock project">
+						</div>
+						<div class="thumb_item">
+							<img class="thumb" src="images/slider5_thumb.jpg" style="width:100%" onclick="currentSlide(5)" alt="Yacht docked at pier;Photo credit: Pexels, Quang Nguyen Vinh">
+						</div>
+						<div class="thumb_item">
+							<img class="thumb" src="images/slider6_thumb.jpg" style="width:100%" onclick="currentSlide(6)" alt="Bench surrounded by palm trees;Photo credit: Pexels, Asad Photo Maldives">
+						</div>
+
+					</div>
+				</div>
+			</section>
+
+			<!-- Map and Location section, 
+				 displays the location info of the Ocean Breeze Resort -->
+			<section id="section_map" class="bg_gray">
+				<div class="featured">
+					<div class="featured_desc">
+						<h2>Discover Our Tranquil Oasis at Ocean Breeze Resort</h2>
+						<p>Nestled along the picturesque shores of Carson Beach in the vibrant Boston area, Ocean Breeze Resort invites you to escape to a tranquil oasis by the sea. Our idyllic location offers the perfect blend of coastal charm and urban convenience, providing guests with a serene retreat just moments away from the bustling city life.</p>
+						<p>As you explore our resort's map and location, you'll find yourself surrounded by pristine beaches, breathtaking ocean views, and a wealth of outdoor adventures waiting to be discovered. Whether you're seeking relaxation on the sandy shores, excitement on the water, or cultural exploration in the city, our prime location ensures that every moment of your stay is filled with unforgettable experiences.</p>
+					</div>
+					<div>
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9921.778390151863!2d-71.05290279552348!3d42.32626704414084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e37af64bec5499%3A0x450e8f0699e5bd61!2z5Y2h5qOu5rW354GY!5e0!3m2!1szh-TW!2stw!4v1712755520520!5m2!1szh-TW!2stw" width="400" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+					</div>
+				</div>
+			</section>
+
+		</main>
+
+		<!-- footer section, 
+		     clicking on the address will scroll to maps/location section, 
+             clicking on the phone and email will link to corresponding actions, 
+             clicking on the social media icons will link to corresponding sites -->
+		<footer>
+			<div id="footer_container">
+				<div id="footer_contact_us">
+					<h3>CONTACT US</h3>
+					<div id="footer_contact_us_content">
+						<h2>Ocean Breeze Resort</h2>
+						<p><i class="fa-solid fa-house"></i><a href="javascript:void(0);" onclick="scrollToMap()">The Address of Ocean Breeze Resort</a></p>
+						<p><i class="fa-solid fa-phone"></i><a href="tel:+11234567890">+1-123-456-7890</a></p>
+						<p><i class="fa-solid fa-envelope"></i><a href="mailto:reservation@oceanbreezeresort.com">reservation@oceanbreezeresort.com</a></p>
+					</div>
+				</div>
+				<div id="footer_follow_us">
+					<h3>FOLLOW US</h3>
+					<p><a href="https://www.facebook.com"><i class="fa-brands fa-square-facebook fa-2xl"></i></a>
+					<a href="https://www.twitter.com"><i class="fa-brands fa-square-x-twitter fa-2xl"></i></a>
+					<a href="https://www.instagram.com"><i class="fa-brands fa-square-instagram fa-2xl"></i></a>
+					<a href="https://www.linkedin.com"><i class="fa-brands fa-linkedin fa-2xl"></i></a></p>
+				</div>
+				<div id="footer_container_copyright">
+					<p>&copy; 2024 Ocean Breeze Resort. All Rights Reserved.</p>
+				</div>
+			</div>
+		</footer>
+
+		<div id="progress"></div>
+
+		<!-- include JavaScript here -->
+		<script src="scripts/common.js"></script>
+	</body>
+</html>
