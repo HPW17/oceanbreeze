@@ -1,2 +1,2 @@
-# ITC2400
-ITC2400 Assignments
+# **ITC2400 Web and Mobile Development**
+## **Signature Assignment:<br>Creating a Website for a Summer Vacation Resort**
